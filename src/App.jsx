@@ -1,10 +1,10 @@
-import Card from './components/Card/Card'
+import Column from './components/Column/Column'
 
 const App = () => {
 
   return (
     <main className="container">
-      <Card title='Hello' description='Hello World!!!' />
+      <Column />
     </main>
   )
 }
