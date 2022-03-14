@@ -1,9 +1,11 @@
-function App() {
+import Card from './components/Card/Card'
+
+const App = () => {
 
   return (
-    <div className="App">
-      Basic To Do List
-    </div>
+    <main className="container">
+      <Card title='Hello' description='Hello World!!!' />
+    </main>
   )
 }
 
