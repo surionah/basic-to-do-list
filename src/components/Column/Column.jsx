@@ -10,6 +10,7 @@ const Column = () => {
     <div className='column'>
       <div className='column__header'>
         <h2>Column 1</h2>
+        <button title='Create new'>Create</button>
       </div>
       {data.map((card) =>
         <Card title={card.title} description={card.description} key={card.id} />
