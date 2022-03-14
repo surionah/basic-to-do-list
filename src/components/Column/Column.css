@@ -10,22 +10,6 @@
   align-items: center;
 }
 
-.column__header button {
-  border: none;
-  border-radius: .5rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  transition: transform .3s;
-  display: none;
-  font-size: 1rem;
-  padding: .5rem;
-}
-
-.column__header button:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-.column__header:hover button {
+.column__header:hover .btn {
   display: block;
 }
