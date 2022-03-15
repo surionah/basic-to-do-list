@@ -1,0 +1,11 @@
+.dashboard {
+  display: flex;
+  overflow-x: auto;
+}
+
+.dashboard__create {
+  width: 10rem;
+  min-width: 10rem;
+  text-align: center;
+  padding-top: 2rem;
+}

@@ -1,9 +1,9 @@
-import Column from './components/Column/Column'
+import Dashboard from './components/Dashboard/Dashboard'
 
 const App = () => {
   return (
     <main className='container'>
-      <Column />
+      <Dashboard />
     </main>
   )
 }
