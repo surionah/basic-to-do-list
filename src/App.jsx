@@ -1,9 +1,8 @@
 import Column from './components/Column/Column'
 
 const App = () => {
-
   return (
-    <main className="container">
+    <main className='container'>
       <Column />
     </main>
   )
