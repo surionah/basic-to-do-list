@@ -1,7 +1,12 @@
 .card {
+  position: relative;
   padding: 1rem;
   background-color: white;
   margin-top: .5rem;
   border-radius: .5rem;
   width: 100%;
+}
+
+.card:hover .overlay {
+  display: block;
 }

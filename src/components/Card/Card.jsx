@@ -1,12 +1,19 @@
 import PropTypes from 'prop-types'
 
+import Overlay from '../Overlay/Overlay'
+
 import './Card.css'
 
 const Card = ({ title, description }) => {
   return (
     <div className='card'>
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <div className='card__info'>
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </div>
+      <Overlay>
+        <></>
+      </Overlay>
     </div>
   )
 }

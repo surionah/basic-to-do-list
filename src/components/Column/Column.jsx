@@ -4,6 +4,7 @@ import data from '../../../data/data'
 
 import Card from '../Card/Card'
 import Button from '../Button/Button'
+import Overlay from '../Overlay/Overlay'
 
 import './Column.css'
 
@@ -12,7 +13,12 @@ const Column = ({ name }) => {
 
   return (
     <div className='column'>
-      <h2>{name}</h2>
+      <div className='column__header'>
+        <h2>{name}</h2>
+        <Overlay>
+          <></>
+        </Overlay>
+      </div>
       {cards.map((card) => (
         <Card title={card.title} description={card.description} key={card.id} />
       ))}

@@ -6,3 +6,16 @@
   flex-direction: column;
   align-items: center;
 }
+
+.column__header {
+  position: relative;
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column__header:hover .overlay {
+  display: block;
+}
