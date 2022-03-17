@@ -10,6 +10,14 @@ const Card = ({ title, description }) => {
 
   const [isMouseHover, setIsMouseHover] = useState(false)
 
+  const onEdit = () => {
+    console.log('Edit Card clicked!!!')
+  }
+
+  const onDelete = () => {
+    console.log('Delete Card clicked!!!')
+  }
+
   return (
     <div className='card' onMouseEnter={() => setIsMouseHover(true)} onMouseLeave={() => setIsMouseHover(false)}>
       <div className='card__info'>
@@ -17,7 +25,7 @@ const Card = ({ title, description }) => {
         <p>{description}</p>
       </div>
       <Overlay isMouseHover={isMouseHover}>
-        <Actions editTooltip='Edit Card' deleteTooltip='Delete Card' />
+        <Actions editTooltip='Edit Card' deleteTooltip='Delete Card' onEditClick={onEdit} onDeleteClick={onDelete} />
       </Overlay>
     </div>
   )
