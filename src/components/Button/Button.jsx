@@ -4,7 +4,7 @@ import './Button.css'
 
 const Button = ({ tooltip, label }) => {
   return (
-    <button className='btn' tooltip={tooltip}>
+    <button className='btn' title={tooltip}>
       {label}
     </button>
   )

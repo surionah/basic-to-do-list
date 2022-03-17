@@ -2,8 +2,6 @@ import PropTypes from 'prop-types'
 
 import Button from '../Button/Button'
 
-import './Actions.css'
-
 const Actions = ({
   editLabel,
   editTooltip,

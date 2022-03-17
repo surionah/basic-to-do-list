@@ -20,7 +20,7 @@ const Column = ({ name }) => {
       <div className='column__header' onMouseEnter={() => setIsMouseHover(true)} onMouseLeave={() => setIsMouseHover(false)}>
         <h2>{name}</h2>
         <Overlay isMouseHover={isMouseHover}>
-          <Actions editTooltip='Edit Card' deleteTooltip='Delete Card' />
+          <Actions editTooltip='Edit Column' deleteTooltip='Delete Column' />
         </Overlay>
       </div>
       {cards.map((card) => (
