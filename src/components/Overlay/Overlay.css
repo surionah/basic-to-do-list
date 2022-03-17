@@ -6,6 +6,12 @@
   top: 0;
   background-color: gray;
   opacity: .8;
-  display: none;
   border-radius: .5rem;
+  display: none;
+}
+
+.overlay.visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

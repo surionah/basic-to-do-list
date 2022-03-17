@@ -6,7 +6,3 @@
   border-radius: .5rem;
   width: 100%;
 }
-
-.card:hover .overlay {
-  display: block;
-}
