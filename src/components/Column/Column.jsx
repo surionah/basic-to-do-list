@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import data from '../../../data/data'
@@ -14,25 +14,29 @@ const Column = ({ name }) => {
   const cards = data.find((item) => item.name === name).cards
 
   const [isMouseHover, setIsMouseHover] = useState(false)
+  const [isEditMode, setIsEditMode] = useState(false)
 
   const onCreate = () => {
     console.log('Create Card clicked!!!')
-  }
-
-  const onEdit = () => {
-    console.log('Edit Column clicked!!!')
   }
 
   const onDelete = () => {
     console.log('Delete Column clicked!!!')
   }
 
+  useEffect(() => {
+    isEditMode && setIsMouseHover(false)
+  }, [isEditMode])
+
   return (
     <div className='column'>
       <div className='column__header' onMouseEnter={() => setIsMouseHover(true)} onMouseLeave={() => setIsMouseHover(false)}>
-        <h2>{name}</h2>
-        <Overlay isMouseHover={isMouseHover}>
-          <Actions editTooltip='Edit Column' deleteTooltip='Delete Column' onEditClick={onEdit} onDeleteClick={onDelete} />
+        {isEditMode ?
+          <input type="text" value={name} /> :
+          <h2>{name}</h2>
+        }
+        <Overlay isMouseHover={isMouseHover && !isEditMode}>
+          <Actions editTooltip='Edit Column' deleteTooltip='Delete Column' onEditClick={() => setIsEditMode(true)} onDeleteClick={onDelete} />
         </Overlay>
       </div>
       {cards.map((card) => (

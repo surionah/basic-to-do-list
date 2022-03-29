@@ -1,31 +1,36 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
+
 
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
+import CardPresentationMode from '../CardPresentationMode/CardPresentationMode'
+import CardEditMode from '../CardEditMode/CardEditMode'
 
 import './Card.css'
 
 const Card = ({ title, description }) => {
 
   const [isMouseHover, setIsMouseHover] = useState(false)
-
-  const onEdit = () => {
-    console.log('Edit Card clicked!!!')
-  }
+  const [isEditMode, setIsEditMode] = useState(false)
 
   const onDelete = () => {
     console.log('Delete Card clicked!!!')
   }
 
+  useEffect(() => {
+    isEditMode && setIsMouseHover(false)
+  }, [isEditMode])
+
   return (
     <div className='card' onMouseEnter={() => setIsMouseHover(true)} onMouseLeave={() => setIsMouseHover(false)}>
-      <div className='card__info'>
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
-      <Overlay isMouseHover={isMouseHover}>
-        <Actions editTooltip='Edit Card' deleteTooltip='Delete Card' onEditClick={onEdit} onDeleteClick={onDelete} />
+      {isEditMode ?
+        <CardEditMode {...{ title, description }} /> :
+        <CardPresentationMode {...{ title, description }} />
+      }
+      <Overlay isMouseHover={isMouseHover && !isEditMode}>
+        <Actions editTooltip='Edit Card' deleteTooltip='Delete Card' onEditClick={() => setIsEditMode(true)} onDeleteClick={onDelete} />
       </Overlay>
     </div>
   )
