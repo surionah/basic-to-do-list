@@ -42,7 +42,11 @@ const Column = ({ name }) => {
       {cards.map((card) => (
         <Card title={card.title} description={card.description} key={card.id} />
       ))}
-      <Button tooltip='Create new' label='Create' onButtonClick={onCreate} />
+      <Button tooltip='Create new'
+	label='Create'
+	type='primary'
+	onButtonClick={onCreate}
+      />
     </div>
   )
 }

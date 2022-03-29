@@ -11,8 +11,17 @@ const Actions = ({
 
   return (
     <div className="actions">
-      <Button tooltip={editTooltip} label='Edit' onButtonClick={onEditClick} ></Button>
-      <Button tooltip={deleteTooltip} label='Delete' onButtonClick={onDeleteClick} ></Button>
+      <Button tooltip={editTooltip}
+	label='Edit'
+	type='primary'
+	onButtonClick={onEditClick}
+      >
+      </Button>
+      <Button tooltip={deleteTooltip}
+	label='Delete'
+	onButtonClick={onDeleteClick}
+      >
+      </Button>
     </div>
   )
 }

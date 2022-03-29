@@ -4,8 +4,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  background-color: gray;
-  opacity: .8;
+  background-color: #81A1C1;
   border-radius: .5rem;
   display: none;
 }

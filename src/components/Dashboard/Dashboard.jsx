@@ -17,7 +17,11 @@ const Dashboard = () => {
         <Column name={column.name} key={column.id} />
       ))}
       <div className='dashboard__create'>
-        <Button tooltip='Create new column' label='Create' onButtonClick={onCreate} />
+        <Button tooltip='Create new column'
+	  label='Create'
+	  type='primary'
+	  onButtonClick={onCreate}
+	/>
       </div>
     </div>
   )
