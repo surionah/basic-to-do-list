@@ -18,7 +18,7 @@ const CardEditMode = ({ title, description }) => {
 
 CardEditMode.propTypes = {
   title: PropTypes.string.isRequired,
-  decsription: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired
 }
 
 export default CardEditMode

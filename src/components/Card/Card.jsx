@@ -35,6 +35,7 @@ const Card = ({ title, description }) => {
     </div>
   )
 }
+
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

@@ -9,11 +9,11 @@ const Input = ({ name, label, value, setValue }) => {
   )
 }
 
-Input.PropTypes = {
+Input.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  setValue: PropTypes.func.isRequired
+  setValue: PropTypes.func.isRequired,
 }
 
 export default Input

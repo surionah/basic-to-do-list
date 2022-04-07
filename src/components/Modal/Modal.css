@@ -1,0 +1,16 @@
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  border: none;
+  border-radius: .5rem;
+  padding: 1.5rem;
+  min-height: 20rem;
+  min-width: 30rem;
+}
+
+.modal::backdrop {
+  background-color: #4C566ADD;
+}
+

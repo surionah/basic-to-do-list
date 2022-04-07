@@ -17,7 +17,7 @@ const Column = ({ name }) => {
   const [isEditMode, setIsEditMode] = useState(false)
 
   const onCreate = () => {
-    console.log('Create Card clicked!!!')
+    console.log('Create clicked!!!')
   }
 
   const onDelete = () => {
