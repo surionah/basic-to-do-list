@@ -1,11 +1,12 @@
 import { useRef, useEffect, useCallback, useContext } from 'react'
+import PropTypes from 'prop-types'
 
 import Button from '../Button/Button'
 import ModalContext from '../../context/modalContext'
 
 import './Modal.css'
 
-const Modal = () => {
+const Modal = ({ title, children }) => {
 
   const dialogRef = useRef(null)
   const isFirstTimeRef = useRef(null)
@@ -33,11 +34,26 @@ const Modal = () => {
     
   return (
     <dialog className='modal' ref={dialogRef}>
-      Modal works!!!
-      <Button tooltip='Save' label='Save' type='primary' onButtonClick={onSaveClick} />
-      <Button tooltip='Cancel' label='Cancel' onButtonClick={onCancelClick} />
+      <h2>{title}</h2>
+      {children}
+      <div className='modal__actions'>
+        <Button tooltip='Save'
+          label='Save'
+          type='primary'
+          onButtonClick={onSaveClick}
+        />
+        <Button tooltip='Cancel'
+          label='Cancel'
+          onButtonClick={onCancelClick}
+        />
+      </div>
     </dialog>
   )
+}
+
+Modal.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired
 }
 
 export default Modal

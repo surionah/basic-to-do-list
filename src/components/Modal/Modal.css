@@ -6,11 +6,19 @@
   border: none;
   border-radius: .5rem;
   padding: 1.5rem;
-  min-height: 20rem;
   min-width: 30rem;
 }
 
 .modal::backdrop {
   background-color: #4C566ADD;
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+.modal__actions {
+  float: right;
+  margin-top: 2rem;
 }
 
