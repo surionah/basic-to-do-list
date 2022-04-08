@@ -37,8 +37,8 @@ const Modal = ({ title, children }) => {
       <h2>{title}</h2>
       {children}
       <div className='modal__actions'>
-        <Button tooltip='Save'
-          label='Save'
+        <Button tooltip='Ok'
+          label='Ok'
           type='primary'
           onButtonClick={onSaveClick}
         />

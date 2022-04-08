@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import data from '../../../data/data'
@@ -7,6 +7,7 @@ import Card from '../Card/Card'
 import Button from '../Button/Button'
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
+import ModalContext from '../../context/modalContext'
 
 import './Column.css'
 
@@ -15,9 +16,10 @@ const Column = ({ name }) => {
 
   const [isMouseHover, setIsMouseHover] = useState(false)
   const [isEditMode, setIsEditMode] = useState(false)
+  const { setIsModalOpen } = useContext(ModalContext)
 
   const onCreate = () => {
-    console.log('Create clicked!!!')
+    setIsModalOpen(isModalOpen => !isModalOpen)
   }
 
   const onDelete = () => {
