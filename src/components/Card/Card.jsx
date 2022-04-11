@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
-import CardPresentationMode from '../CardPresentationMode/CardPresentationMode'
 import ModalContext from '../../context/modalContext'
 
 import './Card.css'
@@ -22,8 +21,14 @@ const Card = ({ title, description }) => {
   }
 
   return (
-    <div className='card' onMouseEnter={() => setIsMouseHover(true)} onMouseLeave={() => setIsMouseHover(false)}>
-      <CardPresentationMode {...{ title, description }} />
+    <div className='card'
+      onMouseEnter={() => setIsMouseHover(true)}
+      onMouseLeave={() => setIsMouseHover(false)}
+    >
+      <div>
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </div>
       <Overlay isMouseHover={isMouseHover}>
         <Actions editTooltip='Edit Card'
           deleteTooltip='Delete Card'
