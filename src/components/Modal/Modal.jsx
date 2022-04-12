@@ -6,11 +6,11 @@ import ModalContext from '../../context/modalContext'
 
 import './Modal.css'
 
-const Modal = ({ title, children }) => {
+const Modal = ({ children }) => {
 
   const dialogRef = useRef(null)
   const isFirstTimeRef = useRef(null)
-  const { isModalOpen, setIsModalOpen } = useContext(ModalContext)
+  const { isModalOpen, setIsModalOpen, modalTitle } = useContext(ModalContext)
 
   const onSaveClick = () => {
     console.log('Save clicked!!!')
@@ -34,7 +34,7 @@ const Modal = ({ title, children }) => {
     
   return (
     <dialog className='modal' ref={dialogRef}>
-      <h2>{title}</h2>
+      <h2>{modalTitle}</h2>
       {children}
       <div className='modal__actions'>
         <Button tooltip='Ok'
@@ -52,7 +52,6 @@ const Modal = ({ title, children }) => {
 }
 
 Modal.propTypes = {
-  title: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired
 }
 

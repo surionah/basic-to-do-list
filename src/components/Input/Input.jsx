@@ -4,7 +4,11 @@ const Input = ({ name, label, value, setValue }) => {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
-      <input name={name} type="text" value={value} onChange={(e) => setValue(e.target.value)} />
+      <input name={name}
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
     </div>
   )
 }

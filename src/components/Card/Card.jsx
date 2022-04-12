@@ -10,13 +10,15 @@ import './Card.css'
 const Card = ({ title, description }) => {
 
   const [isMouseHover, setIsMouseHover] = useState(false)
-  const { setIsModalOpen } = useContext(ModalContext);
+  const { setIsModalOpen, setModalTitle } = useContext(ModalContext);
 
   const onEdit = () => {
+    setModalTitle('Edit card')
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 
   const onDelete = () => {
+    setModalTitle('Delete card')
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 

@@ -11,9 +11,10 @@ import './Dashboard.css'
 
 const Dashboard = () => {
 
-  const { setIsModalOpen } = useContext(ModalContext)
+  const { setIsModalOpen, setModalTitle } = useContext(ModalContext)
 
   const onCreate = () => {
+    setModalTitle('Create column')
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 

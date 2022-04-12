@@ -15,17 +15,20 @@ const Column = ({ name }) => {
   const cards = data.find((item) => item.name === name).cards
 
   const [isMouseHover, setIsMouseHover] = useState(false)
-  const { setIsModalOpen } = useContext(ModalContext)
+  const { setIsModalOpen, setModalTitle } = useContext(ModalContext)
 
   const onCreate = () => {
+    setModalTitle('Create card')
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 
   const onEdit = () => {
+    setModalTitle('Edit column')
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 
   const onDelete = () => {
+    setModalTitle('Delete column')
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 
