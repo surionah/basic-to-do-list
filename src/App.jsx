@@ -7,10 +7,11 @@ const App = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalTitle, setModalTitle] = useState('')
+  const [modalBody, setModalBody] = useState(<></>)
 
   return (
     <main className='container'>
-      <ModalContext.Provider value={{isModalOpen, setIsModalOpen, modalTitle, setModalTitle}}>
+      <ModalContext.Provider value={{isModalOpen, setIsModalOpen, modalTitle, setModalTitle, modalBody, setModalBody}}>
         <Dashboard />
       </ModalContext.Provider>
     </main>

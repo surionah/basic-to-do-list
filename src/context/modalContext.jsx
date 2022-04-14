@@ -4,7 +4,9 @@ const modalContext = {
   isModalOpen: false,
   setIsModalOpen: () => {},
   modalTitle: '',
-  setModalTitle: () => {}
+  setModalTitle: () => {},
+  modalBody: <></>,
+  setModalBody: () => {}
 }
 
 const ModalContext = createContext(modalContext)

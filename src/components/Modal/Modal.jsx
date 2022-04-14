@@ -1,16 +1,15 @@
 import { useRef, useEffect, useCallback, useContext } from 'react'
-import PropTypes from 'prop-types'
 
 import Button from '../Button/Button'
 import ModalContext from '../../context/modalContext'
 
 import './Modal.css'
 
-const Modal = ({ children }) => {
+const Modal = () => {
 
   const dialogRef = useRef(null)
   const isFirstTimeRef = useRef(null)
-  const { isModalOpen, setIsModalOpen, modalTitle } = useContext(ModalContext)
+  const { isModalOpen, setIsModalOpen, modalTitle, modalBody } = useContext(ModalContext)
 
   const onSaveClick = () => {
     console.log('Save clicked!!!')
@@ -35,7 +34,7 @@ const Modal = ({ children }) => {
   return (
     <dialog className='modal' ref={dialogRef}>
       <h2>{modalTitle}</h2>
-      {children}
+      {modalBody}
       <div className='modal__actions'>
         <Button tooltip='Ok'
           label='Ok'
@@ -49,10 +48,6 @@ const Modal = ({ children }) => {
       </div>
     </dialog>
   )
-}
-
-Modal.propTypes = {
-  children: PropTypes.element.isRequired
 }
 
 export default Modal

@@ -7,6 +7,8 @@ import Card from '../Card/Card'
 import Button from '../Button/Button'
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
+import ColumnForm from '../ColumnForm/ColumnForm'
+import CardForm from '../CardForm/CardForm'
 import ModalContext from '../../context/modalContext'
 
 import './Column.css'
@@ -15,20 +17,23 @@ const Column = ({ name }) => {
   const cards = data.find((item) => item.name === name).cards
 
   const [isMouseHover, setIsMouseHover] = useState(false)
-  const { setIsModalOpen, setModalTitle } = useContext(ModalContext)
+  const { setIsModalOpen, setModalTitle, setModalBody } = useContext(ModalContext)
 
   const onCreate = () => {
     setModalTitle('Create card')
+    setModalBody(<CardForm/>)
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 
   const onEdit = () => {
     setModalTitle('Edit column')
+    setModalBody(<ColumnForm/>)
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 
   const onDelete = () => {
     setModalTitle('Delete column')
+    setModalBody(<div>Are you sure to delete <strong>{name}</strong>?</div>)
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 
