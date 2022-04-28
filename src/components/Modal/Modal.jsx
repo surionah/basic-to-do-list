@@ -6,7 +6,6 @@ import ModalContext from '../../context/modalContext'
 import './Modal.css'
 
 const Modal = () => {
-
   const dialogRef = useRef(null)
   const isFirstTimeRef = useRef(null)
   const { isModalOpen, setIsModalOpen, modalTitle, modalBody } = useContext(ModalContext)

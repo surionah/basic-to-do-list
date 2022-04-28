@@ -4,7 +4,7 @@ import data from '../../../data/data'
 
 import Column from '../Column/Column'
 import Button from '../Button/Button'
-import ModalForm from '../ModalForm/ModalForm'
+import Modal from '../Modal/Modal'
 import ColumnForm from '../ColumnForm/ColumnForm'
 import ModalContext from '../../context/modalContext'
 
@@ -34,7 +34,7 @@ const Dashboard = () => {
 	        />
         </div>
       </div>
-      <ModalForm />
+      <Modal />
     </>
   )
 }
