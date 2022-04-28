@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 
+import './Input.css'
+
 const Input = ({ name, label, value, setValue }) => {
   return (
-    <div>
+    <div className='input-field'>
       <label htmlFor={name}>{label}</label>
       <input name={name}
         type="text"

@@ -33,7 +33,7 @@ const Column = ({ name }) => {
 
   const onDelete = () => {
     setModalTitle('Delete column')
-    setModalBody(<div>Are you sure to delete <strong>{name}</strong>?</div>)
+    setModalBody(<span>Are you sure to delete <strong>{name}</strong>?</span>)
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 

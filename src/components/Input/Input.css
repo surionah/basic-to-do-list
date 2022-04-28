@@ -1,0 +1,22 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.input-field label {
+  font-size: 1rem;
+}
+
+.input-field input {
+  border: 1px solid #2E3440;
+  border-radius: 10px;
+  height: 2.5rem;
+  padding-left: .5rem;
+}
+
+.input-field input:focus {
+  outline: #5E81AC;
+}
+

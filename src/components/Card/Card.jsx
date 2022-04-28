@@ -21,7 +21,7 @@ const Card = ({ title, description }) => {
 
   const onDelete = () => {
     setModalTitle('Delete card')
-    setModalBody(<div>Are you sure to delete <strong>{title}</strong>?</div>)
+    setModalBody(<span>Are you sure to delete <strong>{title}</strong>?</span>)
     setIsModalOpen(isModalOpen => !isModalOpen)
   }
 

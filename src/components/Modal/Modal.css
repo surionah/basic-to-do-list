@@ -13,12 +13,16 @@
   background-color: #4C566ADD;
 }
 
-h2 {
-  margin-bottom: 2rem;
+.modal h2 {
+  margin: 0 1rem 2rem;
 }
 
 .modal__actions {
   float: right;
   margin-top: 2rem;
+}
+
+.modal span {
+  font-size: 1rem;
 }
 
