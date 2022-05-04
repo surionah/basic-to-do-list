@@ -1,7 +1,5 @@
 import { useContext } from 'react'
 
-import data from '../../../data/data'
-
 import Column from '../Column/Column'
 import Button from '../Button/Button'
 import Modal from '../Modal/Modal'
@@ -12,6 +10,7 @@ import './Dashboard.css'
 
 const Dashboard = () => {
 
+  const data = []
   const { setIsModalOpen, setModalTitle, setModalBody } = useContext(ModalContext)
 
   const onCreate = () => {

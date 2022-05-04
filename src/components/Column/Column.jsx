@@ -1,8 +1,6 @@
 import { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 
-import data from '../../../data/data'
-
 import Card from '../Card/Card'
 import Button from '../Button/Button'
 import Overlay from '../Overlay/Overlay'
@@ -14,8 +12,8 @@ import ModalContext from '../../context/modalContext'
 import './Column.css'
 
 const Column = ({ name }) => {
-  const cards = data.find((item) => item.name === name).cards
-
+  
+  const cards = []
   const [isMouseHover, setIsMouseHover] = useState(false)
   const { setIsModalOpen, setModalTitle, setModalBody } = useContext(ModalContext)
 
