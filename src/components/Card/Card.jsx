@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
-import CardForm from '../CardForm/CardForm'
 import ModalContext from '../../context/modalContext'
 
 import './Card.css'
@@ -11,18 +10,14 @@ import './Card.css'
 const Card = ({ title, description }) => {
 
   const [isMouseHover, setIsMouseHover] = useState(false)
-  const { setIsModalOpen, setModalTitle, setModalBody } = useContext(ModalContext);
+  const { setModalPurpose } = useContext(ModalContext);
 
   const onEdit = () => {
-    setModalTitle('Edit card')
-    setModalBody(<CardForm/>)
-    setIsModalOpen(isModalOpen => !isModalOpen)
+    setModalPurpose('EDIT_CARD')
   }
 
   const onDelete = () => {
-    setModalTitle('Delete card')
-    setModalBody(<span>Are you sure to delete <strong>{title}</strong>?</span>)
-    setIsModalOpen(isModalOpen => !isModalOpen)
+    setModalPurpose('REMOVE_CARD')
   }
 
   return (

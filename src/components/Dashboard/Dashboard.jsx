@@ -2,39 +2,33 @@ import { useContext } from 'react'
 
 import Column from '../Column/Column'
 import Button from '../Button/Button'
-import Modal from '../Modal/Modal'
-import ColumnForm from '../ColumnForm/ColumnForm'
 import ModalContext from '../../context/modalContext'
+import { store } from '../../state/reducers/column.reducer'
 
 import './Dashboard.css'
 
 const Dashboard = () => {
 
-  const data = []
-  const { setIsModalOpen, setModalTitle, setModalBody } = useContext(ModalContext)
+  const { columns } = store.getState()
+  const { setModalPurpose } = useContext(ModalContext)
 
   const onCreate = () => {
-    setModalTitle('Create column')
-    setModalBody(<ColumnForm/>)
-    setIsModalOpen(isModalOpen => !isModalOpen)
+    setModalPurpose('ADD_COLUMN')
   }
 
   return (
-    <>
-      <div className='dashboard'>
-        {data.map((column) => (
-          <Column name={column.name} key={column.id} />
-        ))}
-        <div className='dashboard__create'>
-          <Button tooltip='Create new column'
-	          label='Create'
-	          type='primary'
-	          onButtonClick={onCreate}
-	        />
-        </div>
+    <div className='dashboard'>
+      {columns.map((column) => (
+        <Column name={column.name} id={column.id} key={column.id} />
+      ))}
+      <div className='dashboard__create'>
+        <Button tooltip='Create new column'
+	        label='Create'
+	        type='primary'
+	        onButtonClick={onCreate}
+	      />
       </div>
-      <Modal />
-    </>
+    </div>
   )
 }
 

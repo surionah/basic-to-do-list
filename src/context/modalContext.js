@@ -1,12 +1,8 @@
 import { createContext } from 'react'
 
 const modalContext = {
-  isModalOpen: false,
-  setIsModalOpen: () => {},
-  modalTitle: '',
-  setModalTitle: () => {},
-  modalBody: <></>,
-  setModalBody: () => {}
+  modalPurpose: '',
+  setModalPurpose: () => {}
 }
 
 const ModalContext = createContext(modalContext)

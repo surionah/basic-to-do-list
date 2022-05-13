@@ -5,34 +5,30 @@ import Card from '../Card/Card'
 import Button from '../Button/Button'
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
-import ColumnForm from '../ColumnForm/ColumnForm'
-import CardForm from '../CardForm/CardForm'
 import ModalContext from '../../context/modalContext'
+import DataContext from '../../context/dataContext'
 
 import './Column.css'
 
-const Column = ({ name }) => {
+const Column = ({ name, id }) => {
   
   const cards = []
-  const [isMouseHover, setIsMouseHover] = useState(false)
-  const { setIsModalOpen, setModalTitle, setModalBody } = useContext(ModalContext)
+  const [ isMouseHover, setIsMouseHover ] = useState(false)
+  const { setModalPurpose } = useContext(ModalContext)
+  const { setSelectedColumnId } = useContext(DataContext)
 
   const onCreate = () => {
-    setModalTitle('Create card')
-    setModalBody(<CardForm/>)
-    setIsModalOpen(isModalOpen => !isModalOpen)
+    setModalPurpose('ADD_CARD')
   }
 
   const onEdit = () => {
-    setModalTitle('Edit column')
-    setModalBody(<ColumnForm/>)
-    setIsModalOpen(isModalOpen => !isModalOpen)
+    setModalPurpose('EDIT_COLUMN')
+    setSelectedColumnId(id)
   }
 
   const onDelete = () => {
-    setModalTitle('Delete column')
-    setModalBody(<span>Are you sure to delete <strong>{name}</strong>?</span>)
-    setIsModalOpen(isModalOpen => !isModalOpen)
+    setModalPurpose('REMOVE_COLUMN')
+    setSelectedColumnId(id)
   }
 
   return (
@@ -60,6 +56,7 @@ const Column = ({ name }) => {
 
 Column.propTypes = {
   name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired
 }
 
 export default Column
