@@ -2,19 +2,19 @@ const ADD_COLUMN = 'ADD_COLUMN'
 const REMOVE_COLUMN = 'REMOVE_COLUMN'
 const EDIT_COLUMN = 'EDIT_COLUMN'
 
-const addColumn = name => ({
+const addColumn = (name) => ({
   type: ADD_COLUMN,
-  payload: { name }
+  payload: { name },
 })
 
-const removeColumn = id => ({
+const removeColumn = (id) => ({
   type: REMOVE_COLUMN,
-  payload: { id }
+  payload: { id },
 })
 
 const editColumn = (name, id) => ({
   type: EDIT_COLUMN,
-  payload: { name, id }
+  payload: { name, id },
 })
 
 export {
@@ -23,6 +23,5 @@ export {
   EDIT_COLUMN,
   addColumn,
   removeColumn,
-  editColumn
+  editColumn,
 }
-

@@ -6,8 +6,9 @@ const Input = ({ name, label, value, setValue }) => {
   return (
     <div className='input-field'>
       <label htmlFor={name}>{label}</label>
-      <input name={name}
-        type="text"
+      <input
+        name={name}
+        type='text'
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />

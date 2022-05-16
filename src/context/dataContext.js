@@ -4,10 +4,9 @@ const dataContext = {
   selectedColumnId: 0,
   setSelectedColumnId: () => {},
   selectedCardId: 0,
-  setSelectedCardId: () => {}
+  setSelectedCardId: () => {},
 }
 
 const DataContext = createContext(dataContext)
 
 export default DataContext
-

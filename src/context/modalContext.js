@@ -2,10 +2,9 @@ import { createContext } from 'react'
 
 const modalContext = {
   modalPurpose: '',
-  setModalPurpose: () => {}
+  setModalPurpose: () => {},
 }
 
 const ModalContext = createContext(modalContext)
 
 export default ModalContext
-

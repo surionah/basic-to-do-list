@@ -8,9 +8,8 @@ import ModalContext from '../../context/modalContext'
 import './Card.css'
 
 const Card = ({ title, description }) => {
-
   const [isMouseHover, setIsMouseHover] = useState(false)
-  const { setModalPurpose } = useContext(ModalContext);
+  const { setModalPurpose } = useContext(ModalContext)
 
   const onEdit = () => {
     setModalPurpose('EDIT_CARD')
@@ -21,7 +20,8 @@ const Card = ({ title, description }) => {
   }
 
   return (
-    <div className='card'
+    <div
+      className='card'
       onMouseEnter={() => setIsMouseHover(true)}
       onMouseLeave={() => setIsMouseHover(false)}
     >
@@ -30,7 +30,8 @@ const Card = ({ title, description }) => {
         <p>{description}</p>
       </div>
       <Overlay isMouseHover={isMouseHover}>
-        <Actions editTooltip='Edit Card'
+        <Actions
+          editTooltip='Edit Card'
           deleteTooltip='Delete Card'
           onEditClick={onEdit}
           onDeleteClick={onDelete}

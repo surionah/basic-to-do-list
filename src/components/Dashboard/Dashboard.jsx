@@ -8,7 +8,6 @@ import { store } from '../../state/reducers/column.reducer'
 import './Dashboard.css'
 
 const Dashboard = () => {
-
   const { columns } = store.getState()
   const { setModalPurpose } = useContext(ModalContext)
 
@@ -22,11 +21,12 @@ const Dashboard = () => {
         <Column name={column.name} id={column.id} key={column.id} />
       ))}
       <div className='dashboard__create'>
-        <Button tooltip='Create new column'
-	        label='Create'
-	        type='primary'
-	        onButtonClick={onCreate}
-	      />
+        <Button
+          tooltip='Create new column'
+          label='Create'
+          type='primary'
+          onButtonClick={onCreate}
+        />
       </div>
     </div>
   )

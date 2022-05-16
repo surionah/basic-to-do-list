@@ -11,9 +11,8 @@ import DataContext from '../../context/dataContext'
 import './Column.css'
 
 const Column = ({ name, id }) => {
-  
   const cards = []
-  const [ isMouseHover, setIsMouseHover ] = useState(false)
+  const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose } = useContext(ModalContext)
   const { setSelectedColumnId } = useContext(DataContext)
 
@@ -33,22 +32,29 @@ const Column = ({ name, id }) => {
 
   return (
     <div className='column'>
-      <div className='column__header' onMouseEnter={() => setIsMouseHover(true)} onMouseLeave={() => setIsMouseHover(false)}>
-        <h2>{name}</h2> 
+      <div
+        className='column__header'
+        onMouseEnter={() => setIsMouseHover(true)}
+        onMouseLeave={() => setIsMouseHover(false)}
+      >
+        <h2>{name}</h2>
         <Overlay isMouseHover={isMouseHover}>
-          <Actions editTooltip='Edit Column'
+          <Actions
+            editTooltip='Edit Column'
             deleteTooltip='Delete Column'
             onEditClick={onEdit}
-            onDeleteClick={onDelete} />
+            onDeleteClick={onDelete}
+          />
         </Overlay>
       </div>
       {cards.map((card) => (
         <Card title={card.title} description={card.description} key={card.id} />
       ))}
-      <Button tooltip='Create new'
-	label='Create'
-	type='primary'
-	onButtonClick={onCreate}
+      <Button
+        tooltip='Create new'
+        label='Create'
+        type='primary'
+        onButtonClick={onCreate}
       />
     </div>
   )
@@ -56,7 +62,7 @@ const Column = ({ name, id }) => {
 
 Column.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
 }
 
 export default Column

@@ -15,11 +15,10 @@ const MODAL_TITLES = {
   REMOVE_COLUMN: 'Remove column',
   ADD_CARD: 'Create new card',
   EDIT_CARD: 'Edit card',
-  REMOVE_CARD: 'Remove card'
+  REMOVE_CARD: 'Remove card',
 }
 
 const Modal = () => {
-
   const { dispatch } = store
   const dialogRef = useRef(null)
   const isFirstTimeRef = useRef(null)
@@ -28,9 +27,9 @@ const Modal = () => {
   const { selectedColumnId } = useContext(DataContext)
 
   const onOkClick = () => {
-    modalPurpose === 'REMOVE_COLUMN' ?
-      dispatch(removeColumn(selectedColumnId)) :
-      modalBodyRef.current.save()
+    modalPurpose === 'REMOVE_COLUMN'
+      ? dispatch(removeColumn(selectedColumnId))
+      : modalBodyRef.current.save()
     setModalPurpose('')
   }
 
@@ -39,7 +38,9 @@ const Modal = () => {
   }
 
   const toggleDialog = useCallback(() => {
-    modalPurpose !== '' ? dialogRef.current.showModal() : dialogRef.current.close()
+    modalPurpose !== ''
+      ? dialogRef.current.showModal()
+      : dialogRef.current.close()
   }, [modalPurpose])
 
   useEffect(() => {
@@ -49,30 +50,28 @@ const Modal = () => {
       toggleDialog()
     }
   }, [modalPurpose])
-    
+
   return (
     <dialog className='modal' ref={dialogRef}>
       <h2>{MODAL_TITLES[modalPurpose]}</h2>
-      {modalPurpose.indexOf('REMOVE_') >= 0 ?
-        <span>Are you sure to delete this item?</span> :
-          modalPurpose.indexOf('_COLUMN') >= 0 ?
-          <ColumnForm ref={modalBodyRef} /> :
-          <div>Card</div>
-      }
+      {modalPurpose.indexOf('REMOVE_') >= 0 ? (
+        <span>Are you sure to delete this item?</span>
+      ) : modalPurpose.indexOf('_COLUMN') >= 0 ? (
+        <ColumnForm ref={modalBodyRef} />
+      ) : (
+        <div>Card</div>
+      )}
       <div className='modal__actions'>
-        <Button tooltip='Ok'
+        <Button
+          tooltip='Ok'
           label='Ok'
           type='primary'
           onButtonClick={onOkClick}
         />
-        <Button tooltip='Cancel'
-          label='Cancel'
-          onButtonClick={onCancelClick}
-        />
+        <Button tooltip='Cancel' label='Cancel' onButtonClick={onCancelClick} />
       </div>
     </dialog>
   )
 }
 
 export default Modal
-

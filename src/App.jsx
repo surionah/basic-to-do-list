@@ -6,7 +6,6 @@ import Dashboard from './components/Dashboard/Dashboard'
 import Modal from './components/Modal/Modal'
 
 const App = () => {
-
   const [modalPurpose, setModalPurpose] = useState('')
   const [selectedColumnId, setSelectedColumnId] = useState(0)
   const [selectedCardId, setSelectedCardId] = useState(0)
@@ -14,7 +13,14 @@ const App = () => {
   return (
     <main className='container'>
       <ModalContext.Provider value={{ modalPurpose, setModalPurpose }}>
-        <DataContext.Provider value={{ selectedCardId, setSelectedCardId, selectedColumnId, setSelectedColumnId }}>
+        <DataContext.Provider
+          value={{
+            selectedCardId,
+            setSelectedCardId,
+            selectedColumnId,
+            setSelectedColumnId,
+          }}
+        >
           <Dashboard />
           <Modal />
         </DataContext.Provider>
@@ -24,4 +30,3 @@ const App = () => {
 }
 
 export default App
-
