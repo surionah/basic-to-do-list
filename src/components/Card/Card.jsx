@@ -4,19 +4,24 @@ import PropTypes from 'prop-types'
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
 import ModalContext from '../../context/modalContext'
+import DataContext from '../../context/dataContext'
 
 import './Card.css'
 
-const Card = ({ title, description }) => {
+const Card = ({ title, description , id, columnId}) => {
   const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose } = useContext(ModalContext)
+  const { setSelectedColumnId, setSelectedCardId } = useContext(DataContext)
 
   const onEdit = () => {
     setModalPurpose('EDIT_CARD')
+    setSelectedCardId(id)
   }
 
   const onDelete = () => {
     setModalPurpose('REMOVE_CARD')
+    setSelectedCardId(id)
+    setSelectedColumnId(columnId)
   }
 
   return (

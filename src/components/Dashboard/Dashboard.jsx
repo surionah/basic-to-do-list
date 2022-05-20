@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import Column from '../Column/Column'
 import Button from '../Button/Button'
 import ModalContext from '../../context/modalContext'
-import { store } from '../../state/reducers/column.reducer'
+import { store } from '../../state/store'
 
 import './Dashboard.css'
 
@@ -17,8 +17,12 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard'>
-      {columns.map((column) => (
-        <Column name={column.name} id={column.id} key={column.id} />
+      {Object.values(columns).map((column) => (
+        <Column name={column.name}
+          id={column.id}
+          cardsIds={column.cardsIds}
+          key={column.id}
+        />
       ))}
       <div className='dashboard__create'>
         <Button

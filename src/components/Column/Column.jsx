@@ -7,17 +7,22 @@ import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
 import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
+import { store } from '../../state/store'
 
 import './Column.css'
 
-const Column = ({ name, id }) => {
-  const cards = []
-  const [isMouseHover, setIsMouseHover] = useState(false)
+const Column = ({ name, id, cardsIds }) => {
+
+  const cardsState = store.getState().cards
+  const cardsStateValues = Object.values(cardsState)
+  const cards = cardsStateValues.length > 0 ? cardsStateValues.filter(card => cardsIds.includes(card.id)) : []
+  const [ isMouseHover, setIsMouseHover ] = useState(false)
   const { setModalPurpose } = useContext(ModalContext)
   const { setSelectedColumnId } = useContext(DataContext)
 
   const onCreate = () => {
     setModalPurpose('ADD_CARD')
+    setSelectedColumnId(id)
   }
 
   const onEdit = () => {
@@ -47,9 +52,14 @@ const Column = ({ name, id }) => {
           />
         </Overlay>
       </div>
-      {cards.map((card) => (
-        <Card title={card.title} description={card.description} key={card.id} />
-      ))}
+      {Object.values(cards).map((card) => (
+        <Card title={card.title}
+          description={card.description}
+          columnId={id}
+          id={card.id}
+          key={card.id}
+        />)
+      )}
       <Button
         tooltip='Create new'
         label='Create'
@@ -63,6 +73,7 @@ const Column = ({ name, id }) => {
 Column.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  cardsIds: PropTypes.array.isRequired,
 }
 
 export default Column

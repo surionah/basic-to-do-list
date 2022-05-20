@@ -2,10 +2,12 @@ import { useRef, useEffect, useCallback, useContext } from 'react'
 
 import Button from '../Button/Button'
 import ColumnForm from '../ColumnForm/ColumnForm'
+import CardForm from '../CardForm/CardForm'
 import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
 import { removeColumn } from '../../state/actions/column.action'
-import { store } from '../../state/reducers/column.reducer'
+import { removeCard } from '../../state/actions/card.action'
+import { store } from '../../state/store'
 
 import './Modal.css'
 
@@ -24,12 +26,20 @@ const Modal = () => {
   const isFirstTimeRef = useRef(null)
   const modalBodyRef = useRef(null)
   const { modalPurpose, setModalPurpose } = useContext(ModalContext)
-  const { selectedColumnId } = useContext(DataContext)
+  const { selectedColumnId, selectedCardId } = useContext(DataContext)
 
   const onOkClick = () => {
-    modalPurpose === 'REMOVE_COLUMN'
-      ? dispatch(removeColumn(selectedColumnId))
-      : modalBodyRef.current.save()
+    switch(modalPurpose) {
+      case 'REMOVE_COLUMN':
+        dispatch(removeColumn(selectedColumnId))
+        break
+      case 'REMOVE_CARD':
+        dispatch(removeCard(selectedCardId, selectedColumnId))
+        break
+      default:
+        modalBodyRef.current.save()
+        break
+    }
     setModalPurpose('')
   }
 
@@ -59,7 +69,7 @@ const Modal = () => {
       ) : modalPurpose.indexOf('_COLUMN') >= 0 ? (
         <ColumnForm ref={modalBodyRef} />
       ) : (
-        <div>Card</div>
+        <CardForm ref={modalBodyRef} />
       )}
       <div className='modal__actions'>
         <Button

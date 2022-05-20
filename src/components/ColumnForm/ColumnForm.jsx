@@ -10,9 +10,9 @@ import Input from '../Input/Input'
 import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
 import { addColumn, editColumn } from '../../state/actions/column.action'
-import { store } from '../../state/reducers/column.reducer'
+import { store } from '../../state/store'
 
-const ColumnFormComp = (props, ref) => {
+const ColumnFormComp = (_, ref) => {
   const { modalPurpose } = useContext(ModalContext)
   const { selectedColumnId } = useContext(DataContext)
   const { dispatch, getState } = store
@@ -22,7 +22,7 @@ const ColumnFormComp = (props, ref) => {
   useImperativeHandle(ref, () => ({
     save: () => {
       !isEdit
-        ? dispatch(addColumn(name))
+        ? dispatch(addColumn(name, Date.now()))
         : dispatch(editColumn(name, selectedColumnId))
     },
   }))
@@ -30,7 +30,7 @@ const ColumnFormComp = (props, ref) => {
   useLayoutEffect(() => {
     isEdit &&
       setName(
-        getState().columns.find((column) => column.id === selectedColumnId).name
+        Object.values(getState().columns).find((column) => column.id === selectedColumnId).name
       )
   }, [modalPurpose])
 
