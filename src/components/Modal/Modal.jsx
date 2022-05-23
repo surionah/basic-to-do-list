@@ -4,10 +4,6 @@ import Button from '../Button/Button'
 import ColumnForm from '../ColumnForm/ColumnForm'
 import CardForm from '../CardForm/CardForm'
 import ModalContext from '../../context/modalContext'
-import DataContext from '../../context/dataContext'
-import { removeColumn } from '../../state/actions/column.action'
-import { removeCard } from '../../state/actions/card.action'
-import { store } from '../../state/store'
 
 import './Modal.css'
 
@@ -21,25 +17,13 @@ const MODAL_TITLES = {
 }
 
 const Modal = () => {
-  const { dispatch } = store
   const dialogRef = useRef(null)
   const isFirstTimeRef = useRef(null)
   const modalBodyRef = useRef(null)
   const { modalPurpose, setModalPurpose } = useContext(ModalContext)
-  const { selectedColumnId, selectedCardId } = useContext(DataContext)
 
   const onOkClick = () => {
-    switch(modalPurpose) {
-      case 'REMOVE_COLUMN':
-        dispatch(removeColumn(selectedColumnId))
-        break
-      case 'REMOVE_CARD':
-        dispatch(removeCard(selectedCardId, selectedColumnId))
-        break
-      default:
-        modalBodyRef.current.save()
-        break
-    }
+    modalBodyRef.current.save()
     setModalPurpose('')
   }
 

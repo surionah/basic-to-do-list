@@ -5,6 +5,8 @@ import Card from '../Card/Card'
 import Button from '../Button/Button'
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
+import { removeCard } from '../../state/actions/card.action'
+import { removeColumn } from '../../state/actions/column.action'
 import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
 import { store } from '../../state/store'
@@ -13,7 +15,8 @@ import './Column.css'
 
 const Column = ({ name, id, cardsIds }) => {
 
-  const cardsState = store.getState().cards
+  const { getState, dispatch } = store
+  const cardsState = getState().cards
   const cardsStateValues = Object.values(cardsState)
   const cards = cardsStateValues.length > 0 ? cardsStateValues.filter(card => cardsIds.includes(card.id)) : []
   const [ isMouseHover, setIsMouseHover ] = useState(false)
@@ -31,8 +34,10 @@ const Column = ({ name, id, cardsIds }) => {
   }
 
   const onDelete = () => {
-    setModalPurpose('REMOVE_COLUMN')
-    setSelectedColumnId(id)
+    cardsIds.forEach(cardId => {
+      dispatch(removeCard(cardId, id))
+    });
+    dispatch(removeColumn(id))
   }
 
   return (
