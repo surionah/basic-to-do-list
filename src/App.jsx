@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { Provider } from 'react-redux'
 
 import ModalContext from './context/modalContext'
 import DataContext from './context/dataContext'
 import Dashboard from './components/Dashboard/Dashboard'
 import Modal from './components/Modal/Modal'
+import { store } from './state/store'
 
 const App = () => {
   const [modalPurpose, setModalPurpose] = useState('')
@@ -21,8 +23,10 @@ const App = () => {
             setSelectedColumnId,
           }}
         >
-          <Dashboard />
-          <Modal />
+          <Provider store={store}>
+            <Dashboard />
+            <Modal />
+          </Provider>
         </DataContext.Provider>
       </ModalContext.Provider>
     </main>

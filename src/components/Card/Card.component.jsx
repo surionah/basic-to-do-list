@@ -5,14 +5,11 @@ import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
 import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
-import { removeCard } from '../../state/actions/card.action'
-import { store } from '../../state/store'
 
 import './Card.css'
 
-const Card = ({ title, description , id, columnId}) => {
+const CardComponent = ({ title, description , id, columnId, removeCard }) => {
 
-  const { dispatch } = store
   const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose } = useContext(ModalContext)
   const { setSelectedCardId } = useContext(DataContext)
@@ -23,7 +20,7 @@ const Card = ({ title, description , id, columnId}) => {
   }
 
   const onDelete = () => {
-    dispatch(removeCard(id, columnId))
+    removeCard(id, columnId)
   }
 
   return (
@@ -48,9 +45,9 @@ const Card = ({ title, description , id, columnId}) => {
   )
 }
 
-Card.propTypes = {
+CardComponent.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 }
 
-export default Card
+export default CardComponent

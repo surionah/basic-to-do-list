@@ -3,12 +3,10 @@ import { useContext } from 'react'
 import Column from '../Column/Column'
 import Button from '../Button/Button'
 import ModalContext from '../../context/modalContext'
-import { store } from '../../state/store'
 
 import './Dashboard.css'
 
-const Dashboard = () => {
-  const { columns } = store.getState()
+const DashboardComponent = ({ columns }) => {
   const { setModalPurpose } = useContext(ModalContext)
 
   const onCreate = () => {
@@ -36,4 +34,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default DashboardComponent

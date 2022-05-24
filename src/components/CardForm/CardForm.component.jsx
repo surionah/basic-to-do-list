@@ -7,16 +7,13 @@ import {
 } from 'react'
 
 import Input from '../Input/Input'
-import { store } from '../../state/store'
 import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
-import { addCard, editCard } from '../../state/actions/card.action'
 
-const CardFormComp = (_, ref) => {
+const CardFormComp = ({ cards, addCard, editCard }, ref) => {
 
   const [ title, setTitle ] = useState('')
   const [ description, setDescription ] = useState('')
-  const { dispatch, getState } = store
   const { modalPurpose } = useContext(ModalContext)
   const { selectedCardId, selectedColumnId } = useContext(DataContext)
   const isEdit = modalPurpose === 'EDIT_CARD'
@@ -24,14 +21,14 @@ const CardFormComp = (_, ref) => {
   useImperativeHandle(ref, () => ({
     save: () => {
       !isEdit
-        ? dispatch(addCard(title, description, Date.now(), selectedColumnId))
-        : dispatch(editCard(title, description, selectedCardId))
+        ? addCard(title, description, Date.now(), selectedColumnId)
+        : editCard(title, description, selectedCardId)
     },
   }))
 
   useLayoutEffect(() => {
     if (isEdit) {
-      const cardToEdit = Object.values(getState().cards).find((card) => card.id === selectedCardId)
+      const cardToEdit = Object.values(cards).find((card) => card.id === selectedCardId)
       setTitle(cardToEdit.title)
       setDescription(cardToEdit.description)
     }

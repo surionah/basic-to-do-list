@@ -9,28 +9,25 @@ import {
 import Input from '../Input/Input'
 import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
-import { addColumn, editColumn } from '../../state/actions/column.action'
-import { store } from '../../state/store'
 
-const ColumnFormComp = (_, ref) => {
+const ColumnFormComp = ({ columns, addColumn, editColumn }, ref) => {
   const { modalPurpose } = useContext(ModalContext)
   const { selectedColumnId } = useContext(DataContext)
-  const { dispatch, getState } = store
   const [name, setName] = useState('')
   const isEdit = modalPurpose === 'EDIT_COLUMN'
 
   useImperativeHandle(ref, () => ({
     save: () => {
       !isEdit
-        ? dispatch(addColumn(name, Date.now()))
-        : dispatch(editColumn(name, selectedColumnId))
+        ? addColumn(name, Date.now())
+        : editColumn(name, selectedColumnId)
     },
   }))
 
   useLayoutEffect(() => {
     isEdit &&
       setName(
-        Object.values(getState().columns).find((column) => column.id === selectedColumnId).name
+        Object.values(columns).find((column) => column.id === selectedColumnId).name
       )
   }, [modalPurpose])
 

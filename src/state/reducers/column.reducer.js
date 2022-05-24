@@ -27,10 +27,7 @@ export const columnsReducer = (state = {}, { type, payload }) => {
     case EDIT_COLUMN:
       const stateEditColumnCopy = JSON.parse(JSON.stringify(state))
       let { [payload.id]: columnToEdit } = stateEditColumnCopy
-      columnToEdit = {
-        ...columnToEdit,
-        name: payload.name,
-      }
+      columnToEdit.name = payload.name
       return {
         ...stateEditColumnCopy,
       }

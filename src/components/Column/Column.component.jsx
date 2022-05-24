@@ -5,18 +5,13 @@ import Card from '../Card/Card'
 import Button from '../Button/Button'
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
-import { removeCard } from '../../state/actions/card.action'
-import { removeColumn } from '../../state/actions/column.action'
 import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
-import { store } from '../../state/store'
 
 import './Column.css'
 
-const Column = ({ name, id, cardsIds }) => {
+const ColumnComponent = ({ cardsState, name, id, cardsIds, removeCard, removeColumn }) => {
 
-  const { getState, dispatch } = store
-  const cardsState = getState().cards
   const cardsStateValues = Object.values(cardsState)
   const cards = cardsStateValues.length > 0 ? cardsStateValues.filter(card => cardsIds.includes(card.id)) : []
   const [ isMouseHover, setIsMouseHover ] = useState(false)
@@ -35,9 +30,9 @@ const Column = ({ name, id, cardsIds }) => {
 
   const onDelete = () => {
     cardsIds.forEach(cardId => {
-      dispatch(removeCard(cardId, id))
+      removeCard(cardId, id)
     });
-    dispatch(removeColumn(id))
+    removeColumn(id)
   }
 
   return (
@@ -75,10 +70,10 @@ const Column = ({ name, id, cardsIds }) => {
   )
 }
 
-Column.propTypes = {
+ColumnComponent.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   cardsIds: PropTypes.array.isRequired,
 }
 
-export default Column
+export default ColumnComponent
