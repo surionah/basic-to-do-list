@@ -18,16 +18,15 @@ const ColumnFormComp = ({ columns, addColumn, editColumn }, ref) => {
 
   useImperativeHandle(ref, () => ({
     save: () => {
-      !isEdit
-        ? addColumn(name, Date.now())
-        : editColumn(name, selectedColumnId)
+      !isEdit ? addColumn(name, Date.now()) : editColumn(name, selectedColumnId)
     },
   }))
 
   useLayoutEffect(() => {
     isEdit &&
       setName(
-        Object.values(columns).find((column) => column.id === selectedColumnId).name
+        Object.values(columns).find((column) => column.id === selectedColumnId)
+          .name
       )
   }, [isEdit, columns])
 

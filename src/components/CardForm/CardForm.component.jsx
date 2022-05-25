@@ -3,7 +3,7 @@ import {
   useContext,
   useState,
   useImperativeHandle,
-  useLayoutEffect
+  useLayoutEffect,
 } from 'react'
 
 import Input from '../Input/Input'
@@ -11,9 +11,8 @@ import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
 
 const CardFormComp = ({ cards, addCard, editCard }, ref) => {
-
-  const [ title, setTitle ] = useState('')
-  const [ description, setDescription ] = useState('')
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
   const { modalPurpose } = useContext(ModalContext)
   const { selectedCardId, selectedColumnId } = useContext(DataContext)
   const isEdit = modalPurpose === 'EDIT_CARD'
@@ -28,7 +27,9 @@ const CardFormComp = ({ cards, addCard, editCard }, ref) => {
 
   useLayoutEffect(() => {
     if (isEdit) {
-      const cardToEdit = Object.values(cards).find((card) => card.id === selectedCardId)
+      const cardToEdit = Object.values(cards).find(
+        (card) => card.id === selectedCardId
+      )
       setTitle(cardToEdit.title)
       setDescription(cardToEdit.description)
     }

@@ -10,11 +10,20 @@ import DataContext from '../../context/dataContext'
 
 import './Column.css'
 
-const ColumnComponent = ({ cardsState, name, id, cardsIds, removeCard, removeColumn }) => {
-
+const ColumnComponent = ({
+  cardsState,
+  name,
+  id,
+  cardsIds,
+  removeCard,
+  removeColumn,
+}) => {
   const cardsStateValues = Object.values(cardsState)
-  const cards = cardsStateValues.length > 0 ? cardsStateValues.filter(card => cardsIds.includes(card.id)) : []
-  const [ isMouseHover, setIsMouseHover ] = useState(false)
+  const cards =
+    cardsStateValues.length > 0
+      ? cardsStateValues.filter((card) => cardsIds.includes(card.id))
+      : []
+  const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose } = useContext(ModalContext)
   const { setSelectedColumnId } = useContext(DataContext)
 
@@ -29,9 +38,9 @@ const ColumnComponent = ({ cardsState, name, id, cardsIds, removeCard, removeCol
   }
 
   const onDelete = () => {
-    cardsIds.forEach(cardId => {
+    cardsIds.forEach((cardId) => {
       removeCard(cardId, id)
-    });
+    })
     removeColumn(id)
   }
 
@@ -53,13 +62,14 @@ const ColumnComponent = ({ cardsState, name, id, cardsIds, removeCard, removeCol
         </Overlay>
       </div>
       {Object.values(cards).map((card) => (
-        <Card title={card.title}
+        <Card
+          title={card.title}
           description={card.description}
           columnId={id}
           id={card.id}
           key={card.id}
-        />)
-      )}
+        />
+      ))}
       <Button
         tooltip='Create new'
         label='Create'

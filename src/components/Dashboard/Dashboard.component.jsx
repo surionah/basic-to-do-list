@@ -16,7 +16,8 @@ const DashboardComponent = ({ columns }) => {
   return (
     <div className='dashboard'>
       {Object.values(columns).map((column) => (
-        <Column name={column.name}
+        <Column
+          name={column.name}
           id={column.id}
           cardsIds={column.cardsIds}
           key={column.id}

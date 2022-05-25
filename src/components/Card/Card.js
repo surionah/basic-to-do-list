@@ -7,11 +7,11 @@ const mapStateToProps = (_, { title, description, id, columnId }) => ({
   title,
   description,
   id,
-  columnId
+  columnId,
 })
 
-const mapDispatchToProps = dispatch => ({
-  removeCard: (id, columnId) => dispatch(removeCard(id, columnId))
+const mapDispatchToProps = (dispatch) => ({
+  removeCard: (id, columnId) => dispatch(removeCard(id, columnId)),
 })
 
 const Card = connect(mapStateToProps, mapDispatchToProps)(CardComponent)

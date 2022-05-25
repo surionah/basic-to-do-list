@@ -1,8 +1,4 @@
-import {
-  ADD_CARD,
-  REMOVE_CARD,
-  EDIT_CARD,
-} from '../actions/card.action'
+import { ADD_CARD, REMOVE_CARD, EDIT_CARD } from '../actions/card.action'
 
 export const cardsReducer = (state = {}, { type, payload }) => {
   switch (type) {

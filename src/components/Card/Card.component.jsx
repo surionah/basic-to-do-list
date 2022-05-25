@@ -8,8 +8,7 @@ import DataContext from '../../context/dataContext'
 
 import './Card.css'
 
-const CardComponent = ({ title, description , id, columnId, removeCard }) => {
-
+const CardComponent = ({ title, description, id, columnId, removeCard }) => {
   const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose } = useContext(ModalContext)
   const { setSelectedCardId } = useContext(DataContext)

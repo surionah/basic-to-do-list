@@ -3,10 +3,7 @@ import {
   REMOVE_COLUMN,
   EDIT_COLUMN,
 } from '../actions/column.action'
-import {
-  ADD_CARD,
-  REMOVE_CARD,
-} from '../actions/card.action'
+import { ADD_CARD, REMOVE_CARD } from '../actions/card.action'
 
 export const columnsReducer = (state = {}, { type, payload }) => {
   switch (type) {
@@ -34,10 +31,7 @@ export const columnsReducer = (state = {}, { type, payload }) => {
     case ADD_CARD:
       const stateAddCardCopy = JSON.parse(JSON.stringify(state))
       const { [payload.columnId]: columnToAddCard } = stateAddCardCopy
-      columnToAddCard.cardsIds = [
-        ...columnToAddCard.cardsIds,
-        payload.cardId,
-      ]
+      columnToAddCard.cardsIds = [...columnToAddCard.cardsIds, payload.cardId]
       return {
         ...stateAddCardCopy,
       }
@@ -45,7 +39,9 @@ export const columnsReducer = (state = {}, { type, payload }) => {
       const removeCardStateCopy = JSON.parse(JSON.stringify(state))
       const { [payload.columnId]: columnToRemoveCard } = removeCardStateCopy
       columnToRemoveCard.cardsIds = [
-        ...columnToRemoveCard.cardsIds.filter(cardId => cardId !== payload.cardId)
+        ...columnToRemoveCard.cardsIds.filter(
+          (cardId) => cardId !== payload.cardId
+        ),
       ]
       return {
         ...removeCardStateCopy,
