@@ -29,7 +29,7 @@ const ColumnFormComp = ({ columns, addColumn, editColumn }, ref) => {
       setName(
         Object.values(columns).find((column) => column.id === selectedColumnId).name
       )
-  }, [modalPurpose])
+  }, [isEdit, columns])
 
   return (
     <div>

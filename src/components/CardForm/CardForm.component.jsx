@@ -32,7 +32,7 @@ const CardFormComp = ({ cards, addCard, editCard }, ref) => {
       setTitle(cardToEdit.title)
       setDescription(cardToEdit.description)
     }
-  }, [modalPurpose])
+  }, [isEdit, cards, selectedCardId])
 
   return (
     <div>

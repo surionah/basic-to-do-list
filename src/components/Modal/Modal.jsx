@@ -48,13 +48,11 @@ const Modal = () => {
   return (
     <dialog className='modal' ref={dialogRef}>
       <h2>{MODAL_TITLES[modalPurpose]}</h2>
-      {modalPurpose.indexOf('REMOVE_') >= 0 ? (
-        <span>Are you sure to delete this item?</span>
-      ) : modalPurpose.indexOf('_COLUMN') >= 0 ? (
+      {modalPurpose.length > 0 && (modalPurpose.indexOf('_COLUMN') >= 0 ? (
         <ColumnForm ref={modalBodyRef} />
       ) : (
         <CardForm ref={modalBodyRef} />
-      )}
+      ))}
       <div className='modal__actions'>
         <Button
           tooltip='Ok'
