@@ -1,14 +1,13 @@
-import { useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import Column from '../Column/Column'
 import Button from '../Button/Button'
-import ModalContext from '../../context/modalContext'
+import useAppContext from '../../hooks/useAppContext'
 
 import './Dashboard.css'
 
 const DashboardComponent = ({ columns }) => {
-  const { setModalPurpose } = useContext(ModalContext)
+  const { setModalPurpose } = useAppContext()
 
   const onCreate = () => {
     setModalPurpose('ADD_COLUMN')

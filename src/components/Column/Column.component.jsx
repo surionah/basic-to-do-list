@@ -1,12 +1,11 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import Card from '../Card/Card'
 import Button from '../Button/Button'
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
-import ModalContext from '../../context/modalContext'
-import DataContext from '../../context/dataContext'
+import useAppContext from '../../hooks/useAppContext'
 
 import './Column.css'
 
@@ -24,8 +23,7 @@ const ColumnComponent = ({
       ? cardsStateValues.filter((card) => cardsIds.includes(card.id))
       : []
   const [isMouseHover, setIsMouseHover] = useState(false)
-  const { setModalPurpose } = useContext(ModalContext)
-  const { setSelectedColumnId } = useContext(DataContext)
+  const { setModalPurpose, setSelectedColumnId } = useAppContext()
 
   const onCreate = () => {
     setModalPurpose('ADD_CARD')

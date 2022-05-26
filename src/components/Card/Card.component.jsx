@@ -1,17 +1,15 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
-import ModalContext from '../../context/modalContext'
-import DataContext from '../../context/dataContext'
+import useAppContext from '../../hooks/useAppContext'
 
 import './Card.css'
 
 const CardComponent = ({ title, description, id, columnId, removeCard }) => {
   const [isMouseHover, setIsMouseHover] = useState(false)
-  const { setModalPurpose } = useContext(ModalContext)
-  const { setSelectedCardId } = useContext(DataContext)
+  const { setModalPurpose, setSelectedCardId } = useAppContext()
 
   const onEdit = () => {
     setModalPurpose('EDIT_CARD')

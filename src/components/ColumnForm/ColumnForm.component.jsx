@@ -3,17 +3,14 @@ import {
   useState,
   useLayoutEffect,
   useImperativeHandle,
-  useContext,
 } from 'react'
 import PropTypes from 'prop-types'
 
 import Input from '../Input/Input'
-import ModalContext from '../../context/modalContext'
-import DataContext from '../../context/dataContext'
+import useAppContext from '../../hooks/useAppContext'
 
 const ColumnFormComp = forwardRef(({ columns, addColumn, editColumn }, ref) => {
-  const { modalPurpose } = useContext(ModalContext)
-  const { selectedColumnId } = useContext(DataContext)
+  const { modalPurpose, selectedColumnId } = useAppContext()
   const [name, setName] = useState('')
   const isEdit = modalPurpose === 'EDIT_COLUMN'
 

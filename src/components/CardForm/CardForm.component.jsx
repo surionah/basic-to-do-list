@@ -1,6 +1,5 @@
 import {
   forwardRef,
-  useContext,
   useState,
   useImperativeHandle,
   useLayoutEffect,
@@ -8,14 +7,12 @@ import {
 import PropTypes from 'prop-types'
 
 import Input from '../Input/Input'
-import ModalContext from '../../context/modalContext'
-import DataContext from '../../context/dataContext'
+import useAppContext from '../../hooks/useAppContext'
 
 const CardFormComp = forwardRef(({ cards, addCard, editCard }, ref) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const { modalPurpose } = useContext(ModalContext)
-  const { selectedCardId, selectedColumnId } = useContext(DataContext)
+  const { modalPurpose, selectedCardId, selectedColumnId } = useAppContext()
   const isEdit = modalPurpose === 'EDIT_CARD'
 
   useImperativeHandle(ref, () => ({

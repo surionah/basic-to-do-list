@@ -1,9 +1,9 @@
-import { useRef, useEffect, useCallback, useContext } from 'react'
+import { useRef, useEffect, useCallback } from 'react'
 
 import Button from '../Button/Button'
 import ColumnForm from '../ColumnForm/ColumnForm'
 import CardForm from '../CardForm/CardForm'
-import ModalContext from '../../context/modalContext'
+import useAppContext from '../../hooks/useAppContext'
 
 import './Modal.css'
 
@@ -20,7 +20,7 @@ const Modal = () => {
   const dialogRef = useRef(null)
   const isFirstTimeRef = useRef(null)
   const modalBodyRef = useRef(null)
-  const { modalPurpose, setModalPurpose } = useContext(ModalContext)
+  const { modalPurpose, setModalPurpose } = useAppContext()
 
   const onOkClick = () => {
     modalBodyRef.current.save()
