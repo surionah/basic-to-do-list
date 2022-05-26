@@ -1,3 +1,4 @@
+import { cloneObject } from '../../utils/utils'
 import {
   ADD_COLUMN,
   REMOVE_COLUMN,
@@ -17,26 +18,27 @@ export const columnsReducer = (state = {}, { type, payload }) => {
         },
       }
     case REMOVE_COLUMN:
-      const { [payload.id]: columnToRemove, ...removeRestState } = state
+      const stateRemoveClon = cloneObject(state)
+      delete stateRemoveClon[payload.id]
       return {
-        ...removeRestState,
+        ...stateRemoveClon,
       }
     case EDIT_COLUMN:
-      const stateEditColumnCopy = JSON.parse(JSON.stringify(state))
+      const stateEditColumnCopy = cloneObject(state)
       let { [payload.id]: columnToEdit } = stateEditColumnCopy
       columnToEdit.name = payload.name
       return {
         ...stateEditColumnCopy,
       }
     case ADD_CARD:
-      const stateAddCardCopy = JSON.parse(JSON.stringify(state))
+      const stateAddCardCopy = cloneObject(state)
       const { [payload.columnId]: columnToAddCard } = stateAddCardCopy
       columnToAddCard.cardsIds = [...columnToAddCard.cardsIds, payload.cardId]
       return {
         ...stateAddCardCopy,
       }
     case REMOVE_CARD:
-      const removeCardStateCopy = JSON.parse(JSON.stringify(state))
+      const removeCardStateCopy = cloneObject(state)
       const { [payload.columnId]: columnToRemoveCard } = removeCardStateCopy
       columnToRemoveCard.cardsIds = [
         ...columnToRemoveCard.cardsIds.filter(

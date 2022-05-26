@@ -5,12 +5,13 @@ import {
   useImperativeHandle,
   useLayoutEffect,
 } from 'react'
+import PropTypes from 'prop-types'
 
 import Input from '../Input/Input'
 import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
 
-const CardFormComp = ({ cards, addCard, editCard }, ref) => {
+const CardFormComp = forwardRef(({ cards, addCard, editCard }, ref) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const { modalPurpose } = useContext(ModalContext)
@@ -51,6 +52,13 @@ const CardFormComp = ({ cards, addCard, editCard }, ref) => {
       />
     </div>
   )
+})
+
+CardFormComp.displayName = 'CardFormComp'
+CardFormComp.propTypes = {
+  cards: PropTypes.object.isRequired,
+  addCard: PropTypes.func.isRequired,
+  editCard: PropTypes.func.isRequired,
 }
 
-export default forwardRef(CardFormComp)
+export default CardFormComp

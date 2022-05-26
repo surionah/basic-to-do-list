@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import PropTypes from 'prop-types'
 
 import Column from '../Column/Column'
 import Button from '../Button/Button'
@@ -33,6 +34,10 @@ const DashboardComponent = ({ columns }) => {
       </div>
     </div>
   )
+}
+
+DashboardComponent.propTypes = {
+  columns: PropTypes.object.isRequired,
 }
 
 export default DashboardComponent

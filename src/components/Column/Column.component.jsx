@@ -81,9 +81,12 @@ const ColumnComponent = ({
 }
 
 ColumnComponent.propTypes = {
+  cardsState: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   cardsIds: PropTypes.array.isRequired,
+  removeCard: PropTypes.func.isRequired,
+  removeColumn: PropTypes.func.isRequired,
 }
 
 export default ColumnComponent

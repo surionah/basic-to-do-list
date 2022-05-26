@@ -1,3 +1,4 @@
+import { cloneObject } from '../../utils/utils'
 import { ADD_CARD, REMOVE_CARD, EDIT_CARD } from '../actions/card.action'
 
 export const cardsReducer = (state = {}, { type, payload }) => {
@@ -12,17 +13,18 @@ export const cardsReducer = (state = {}, { type, payload }) => {
         },
       }
     case REMOVE_CARD:
-      const { [payload.cardId]: cardToRemove, ...removeRestState } = state
+      const stateRemoveClon = cloneObject(state)
+      delete stateRemoveClon[payload.cardId]
       return {
-        ...removeRestState,
+        ...stateRemoveClon,
       }
     case EDIT_CARD:
-      const stateCopy = JSON.parse(JSON.stringify(state))
-      const { [payload.cardId]: cardToEdit } = stateCopy
+      const stateEditClon = cloneObject(state)
+      const { [payload.cardId]: cardToEdit } = stateEditClon
       cardToEdit.title = payload.title
       cardToEdit.description = payload.description
       return {
-        ...stateCopy,
+        ...stateEditClon,
       }
     default:
       return state

@@ -47,6 +47,9 @@ const CardComponent = ({ title, description, id, columnId, removeCard }) => {
 CardComponent.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  columnId: PropTypes.number.isRequired,
+  removeCard: PropTypes.func.isRequired,
 }
 
 export default CardComponent

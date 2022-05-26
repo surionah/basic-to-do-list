@@ -5,12 +5,13 @@ import {
   useImperativeHandle,
   useContext,
 } from 'react'
+import PropTypes from 'prop-types'
 
 import Input from '../Input/Input'
 import ModalContext from '../../context/modalContext'
 import DataContext from '../../context/dataContext'
 
-const ColumnFormComp = ({ columns, addColumn, editColumn }, ref) => {
+const ColumnFormComp = forwardRef(({ columns, addColumn, editColumn }, ref) => {
   const { modalPurpose } = useContext(ModalContext)
   const { selectedColumnId } = useContext(DataContext)
   const [name, setName] = useState('')
@@ -35,6 +36,13 @@ const ColumnFormComp = ({ columns, addColumn, editColumn }, ref) => {
       <Input name='column-name' label='Name' value={name} setValue={setName} />
     </div>
   )
+})
+
+ColumnFormComp.displayName = 'ColumnFormComp'
+ColumnFormComp.propTypes = {
+  columns: PropTypes.object.isRequired,
+  addColumn: PropTypes.func.isRequired,
+  editColumn: PropTypes.func.isRequired,
 }
 
-export default forwardRef(ColumnFormComp)
+export default ColumnFormComp
