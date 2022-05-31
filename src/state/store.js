@@ -6,6 +6,6 @@ import cardReducer from './slices/card.slice'
 export const store = configureStore({
   reducer: {
     columns: columnReducer,
-    cards: cardReducer
-  }
+    cards: cardReducer,
+  },
 })

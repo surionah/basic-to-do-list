@@ -15,14 +15,15 @@ const DashboardComponent = ({ columns }) => {
 
   return (
     <div className='dashboard'>
-      {columns.length > 0 && columns.map((column) => (
-        <Column
-          name={column.name}
-          id={column.id}
-          cardsIds={column.cardsIds}
-          key={column.id}
-        />
-      ))}
+      {columns.length > 0 &&
+        columns.map((column) => (
+          <Column
+            name={column.name}
+            id={column.id}
+            cardsIds={column.cardsIds}
+            key={column.id}
+          />
+        ))}
       <div className='dashboard__create'>
         <Button
           tooltip='Create new column'

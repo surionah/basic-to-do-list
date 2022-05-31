@@ -3,15 +3,15 @@ import { createSlice } from '@reduxjs/toolkit'
 const defaultColumnActionPrepare = (id, name) => ({
   payload: {
     id,
-    name
-  }
+    name,
+  },
 })
 
 const defaultCardActionPrepare = (columnId, cardId) => ({
   payload: {
     columnId,
-    cardId
-  }
+    cardId,
+  },
 })
 
 export const columnSlice = createSlice({
@@ -27,7 +27,7 @@ export const columnSlice = createSlice({
           cardsIds: [],
         },
       }),
-      prepare: defaultColumnActionPrepare
+      prepare: defaultColumnActionPrepare,
     },
     removeColumn: (state, action) => {
       delete state[action.payload]
@@ -37,25 +37,33 @@ export const columnSlice = createSlice({
         const { [payload.id]: columnToEdit } = state
         columnToEdit.name = payload.name
       },
-      prepare: defaultColumnActionPrepare
+      prepare: defaultColumnActionPrepare,
     },
     addCardToColumn: {
-      reducer: (state, { payload}) => {
+      reducer: (state, { payload }) => {
         const { [payload.columnId]: columnToAddCard } = state
         columnToAddCard.cardsIds.push(payload.cardId)
       },
-      prepare: defaultCardActionPrepare
+      prepare: defaultCardActionPrepare,
     },
     removeCardFromColumn: {
       reducer: (state, { payload }) => {
         const { [payload.columnId]: columnToRemoveCard } = state
-        columnToRemoveCard.cardsIds = columnToRemoveCard.cardsIds.filter(id => id !== payload.cardId)
+        columnToRemoveCard.cardsIds = columnToRemoveCard.cardsIds.filter(
+          (id) => id !== payload.cardId
+        )
       },
-      prepare: defaultCardActionPrepare
-    }
-  }
+      prepare: defaultCardActionPrepare,
+    },
+  },
 })
 
-export const { addColumn, removeColumn, editColumn, addCardToColumn, removeCardFromColumn } = columnSlice.actions
+export const {
+  addColumn,
+  removeColumn,
+  editColumn,
+  addCardToColumn,
+  removeCardFromColumn,
+} = columnSlice.actions
 
 export default columnSlice.reducer

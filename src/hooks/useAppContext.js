@@ -4,7 +4,12 @@ import DataContext from '../context/dataContext'
 import ModalContext from '../context/modalContext'
 
 const useAppContext = () => {
-  const { selectedCardId, selectedColumnId, setSelectedCardId, setSelectedColumnId } = useContext(DataContext)
+  const {
+    selectedCardId,
+    selectedColumnId,
+    setSelectedCardId,
+    setSelectedColumnId,
+  } = useContext(DataContext)
   const { modalPurpose, setModalPurpose } = useContext(ModalContext)
 
   return {
@@ -13,7 +18,7 @@ const useAppContext = () => {
     setSelectedCardId,
     setSelectedColumnId,
     modalPurpose,
-    setModalPurpose
+    setModalPurpose,
   }
 }
 

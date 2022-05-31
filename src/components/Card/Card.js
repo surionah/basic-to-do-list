@@ -13,7 +13,8 @@ const mapStateToProps = (_, { title, description, id, columnId }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   removeCard: (id) => dispatch(removeCard(id)),
-  removeCardFromColumn: (columnId, cardId) => dispatch(removeCardFromColumn(columnId, cardId))
+  removeCardFromColumn: (columnId, cardId) =>
+    dispatch(removeCardFromColumn(columnId, cardId)),
 })
 
 const Card = connect(mapStateToProps, mapDispatchToProps)(CardComponent)

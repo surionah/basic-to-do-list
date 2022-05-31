@@ -7,7 +7,14 @@ import useAppContext from '../../hooks/useAppContext'
 
 import './Card.css'
 
-const CardComponent = ({ title, description, id, columnId, removeCard, removeCardFromColumn }) => {
+const CardComponent = ({
+  title,
+  description,
+  id,
+  columnId,
+  removeCard,
+  removeCardFromColumn,
+}) => {
   const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose, setSelectedCardId } = useAppContext()
 

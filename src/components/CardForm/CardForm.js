@@ -9,9 +9,12 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addCard: (id, title, description) => dispatch(addCard(id, title, description)),
-  editCard: (id, title, description) => dispatch(editCard(id, title, description)),
-  addCardToColumn: (columnId, cardId) => dispatch(addCardToColumn(columnId, cardId))
+  addCard: (id, title, description) =>
+    dispatch(addCard(id, title, description)),
+  editCard: (id, title, description) =>
+    dispatch(editCard(id, title, description)),
+  addCardToColumn: (columnId, cardId) =>
+    dispatch(addCardToColumn(columnId, cardId)),
 })
 
 const CardForm = connect(mapStateToProps, mapDispatchToProps, null, {

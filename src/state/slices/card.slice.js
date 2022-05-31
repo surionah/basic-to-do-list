@@ -4,8 +4,8 @@ const defaultCardActionPrepare = (id, title, description) => ({
   payload: {
     id,
     title,
-    description
-  }
+    description,
+  },
 })
 
 export const cardSlice = createSlice({
@@ -18,10 +18,10 @@ export const cardSlice = createSlice({
         [payload.id]: {
           id: payload.id,
           title: payload.title,
-          description: payload.description
-        }
+          description: payload.description,
+        },
       }),
-      prepare: defaultCardActionPrepare
+      prepare: defaultCardActionPrepare,
     },
     editCard: {
       reducer: (state, { payload }) => {
@@ -29,12 +29,12 @@ export const cardSlice = createSlice({
         cardToEdit.title = payload.title
         cardToEdit.description = payload.description
       },
-      prepare: defaultCardActionPrepare
+      prepare: defaultCardActionPrepare,
     },
     removeCard: (state, action) => {
       delete state[action.payload]
-    }
-  }
+    },
+  },
 })
 
 export const { addCard, editCard, removeCard } = cardSlice.actions

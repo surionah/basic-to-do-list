@@ -17,7 +17,6 @@ const ColumnComponent = ({
   removeCard,
   removeColumn,
 }) => {
-
   const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose, setSelectedColumnId } = useAppContext()
 
@@ -55,18 +54,18 @@ const ColumnComponent = ({
           />
         </Overlay>
       </div>
-      {cards.length > 0 && cards
-        .filter((card) => cardsIds.includes(card.id))
-        .map((card) => (
-          <Card
-            title={card.title}
-            description={card.description}
-            columnId={id}
-            id={card.id}
-            key={card.id}
-          />
-        )
-      )}
+      {cards.length > 0 &&
+        cards
+          .filter((card) => cardsIds.includes(card.id))
+          .map((card) => (
+            <Card
+              title={card.title}
+              description={card.description}
+              columnId={id}
+              id={card.id}
+              key={card.id}
+            />
+          ))}
       <Button
         tooltip='Create new'
         label='Create'

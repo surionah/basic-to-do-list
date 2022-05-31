@@ -21,7 +21,8 @@ const ColumnFormComp = forwardRef(({ columns, addColumn, editColumn }, ref) => {
   }))
 
   useLayoutEffect(() => {
-    isEdit && setName(columns.find((column) => column.id === selectedColumnId).name)
+    isEdit &&
+      setName(columns.find((column) => column.id === selectedColumnId).name)
   }, [isEdit, columns])
 
   return (
