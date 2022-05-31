@@ -10,18 +10,14 @@ import useAppContext from '../../hooks/useAppContext'
 import './Column.css'
 
 const ColumnComponent = ({
-  cardsState,
+  cards,
   name,
   id,
   cardsIds,
   removeCard,
   removeColumn,
 }) => {
-  const cardsStateValues = Object.values(cardsState)
-  const cards =
-    cardsStateValues.length > 0
-      ? cardsStateValues.filter((card) => cardsIds.includes(card.id))
-      : []
+
   const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose, setSelectedColumnId } = useAppContext()
 
@@ -59,15 +55,18 @@ const ColumnComponent = ({
           />
         </Overlay>
       </div>
-      {Object.values(cards).map((card) => (
-        <Card
-          title={card.title}
-          description={card.description}
-          columnId={id}
-          id={card.id}
-          key={card.id}
-        />
-      ))}
+      {cards.length > 0 && cards
+        .filter((card) => cardsIds.includes(card.id))
+        .map((card) => (
+          <Card
+            title={card.title}
+            description={card.description}
+            columnId={id}
+            id={card.id}
+            key={card.id}
+          />
+        )
+      )}
       <Button
         tooltip='Create new'
         label='Create'
@@ -79,7 +78,7 @@ const ColumnComponent = ({
 }
 
 ColumnComponent.propTypes = {
-  cardsState: PropTypes.object.isRequired,
+  cards: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   cardsIds: PropTypes.array.isRequired,

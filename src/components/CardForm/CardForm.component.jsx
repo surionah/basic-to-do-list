@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import Input from '../Input/Input'
 import useAppContext from '../../hooks/useAppContext'
 
-const CardFormComp = forwardRef(({ cards, addCard, editCard }, ref) => {
+const CardFormComp = forwardRef(({ cards, addCard, editCard, addCardToColumn }, ref) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const { modalPurpose, selectedCardId, selectedColumnId } = useAppContext()
@@ -17,17 +17,19 @@ const CardFormComp = forwardRef(({ cards, addCard, editCard }, ref) => {
 
   useImperativeHandle(ref, () => ({
     save: () => {
-      !isEdit
-        ? addCard(title, description, Date.now(), selectedColumnId)
-        : editCard(title, description, selectedCardId)
+      if (!isEdit) {
+        const cardId = Date.now()
+        addCard(cardId, title, description)
+        addCardToColumn(selectedColumnId, cardId)
+      } else {
+        editCard(selectedCardId, title, description)
+      }
     },
   }))
 
   useLayoutEffect(() => {
     if (isEdit) {
-      const cardToEdit = Object.values(cards).find(
-        (card) => card.id === selectedCardId
-      )
+      const { [selectedCardId]: cardToEdit } = cards
       setTitle(cardToEdit.title)
       setDescription(cardToEdit.description)
     }
@@ -56,6 +58,7 @@ CardFormComp.propTypes = {
   cards: PropTypes.object.isRequired,
   addCard: PropTypes.func.isRequired,
   editCard: PropTypes.func.isRequired,
+  addCardToColumn: PropTypes.func.isRequired
 }
 
 export default CardFormComp

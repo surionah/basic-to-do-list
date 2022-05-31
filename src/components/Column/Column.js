@@ -1,18 +1,18 @@
 import { connect } from 'react-redux'
 
-import { removeCard } from '../../state/actions/card.action'
-import { removeColumn } from '../../state/actions/column.action'
+import { removeColumn } from '../../state/slices/column.slice'
+import { removeCard } from '../../state/slices/card.slice'
 import ColumnComponent from './Column.component'
 
 const mapStateToProps = (state, { name, id, cardsIds }) => ({
-  cardsState: state.cards,
+  cards: Object.values(state.cards),
   name,
   id,
   cardsIds,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  removeCard: (cardId, columnId) => dispatch(removeCard(cardId, columnId)),
+  removeCard: (id) => dispatch(removeCard(id)),
   removeColumn: (id) => dispatch(removeColumn(id)),
 })
 

@@ -1,15 +1,15 @@
 import { connect } from 'react-redux'
 
-import { addColumn, editColumn } from '../../state/actions/column.action'
+import { addColumn, editColumn } from '../../state/slices/column.slice'
 import ColumnFormComponent from './ColumnForm.component'
 
 const mapStateToProps = (state) => ({
-  columns: state.columns,
+  columns: Object.values(state.columns),
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addColumn: (name, id) => dispatch(addColumn(name, id)),
-  editColumn: (name, columnId) => dispatch(editColumn(name, columnId)),
+  addColumn: (id, name) => dispatch(addColumn(id, name)),
+  editColumn: (id, name) => dispatch(editColumn(id, name)),
 })
 
 const ColumnForm = connect(mapStateToProps, mapDispatchToProps, null, {

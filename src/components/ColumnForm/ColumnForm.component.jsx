@@ -16,16 +16,12 @@ const ColumnFormComp = forwardRef(({ columns, addColumn, editColumn }, ref) => {
 
   useImperativeHandle(ref, () => ({
     save: () => {
-      !isEdit ? addColumn(name, Date.now()) : editColumn(name, selectedColumnId)
+      !isEdit ? addColumn(Date.now(), name) : editColumn(selectedColumnId, name)
     },
   }))
 
   useLayoutEffect(() => {
-    isEdit &&
-      setName(
-        Object.values(columns).find((column) => column.id === selectedColumnId)
-          .name
-      )
+    isEdit && setName(columns.find((column) => column.id === selectedColumnId).name)
   }, [isEdit, columns])
 
   return (
@@ -37,7 +33,7 @@ const ColumnFormComp = forwardRef(({ columns, addColumn, editColumn }, ref) => {
 
 ColumnFormComp.displayName = 'ColumnFormComp'
 ColumnFormComp.propTypes = {
-  columns: PropTypes.object.isRequired,
+  columns: PropTypes.array.isRequired,
   addColumn: PropTypes.func.isRequired,
   editColumn: PropTypes.func.isRequired,
 }

@@ -1,13 +1,11 @@
-import { createStore, combineReducers } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 
-import { columnsReducer } from './reducers/column.reducer'
-import { cardsReducer } from './reducers/card.reducer'
-import { composeWithDevTools } from 'redux-devtools-extension'
+import columnReducer from './slices/column.slice'
+import cardReducer from './slices/card.slice'
 
-export const store = createStore(
-  combineReducers({
-    columns: columnsReducer,
-    cards: cardsReducer,
-  }),
-  composeWithDevTools()
-)
+export const store = configureStore({
+  reducer: {
+    columns: columnReducer,
+    cards: cardReducer
+  }
+})

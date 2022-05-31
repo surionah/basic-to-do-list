@@ -15,7 +15,7 @@ const DashboardComponent = ({ columns }) => {
 
   return (
     <div className='dashboard'>
-      {Object.values(columns).map((column) => (
+      {columns.length > 0 && columns.map((column) => (
         <Column
           name={column.name}
           id={column.id}
@@ -36,7 +36,7 @@ const DashboardComponent = ({ columns }) => {
 }
 
 DashboardComponent.propTypes = {
-  columns: PropTypes.object.isRequired,
+  columns: PropTypes.array.isRequired,
 }
 
 export default DashboardComponent

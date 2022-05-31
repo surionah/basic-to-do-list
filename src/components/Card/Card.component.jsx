@@ -7,7 +7,7 @@ import useAppContext from '../../hooks/useAppContext'
 
 import './Card.css'
 
-const CardComponent = ({ title, description, id, columnId, removeCard }) => {
+const CardComponent = ({ title, description, id, columnId, removeCard, removeCardFromColumn }) => {
   const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose, setSelectedCardId } = useAppContext()
 
@@ -17,7 +17,8 @@ const CardComponent = ({ title, description, id, columnId, removeCard }) => {
   }
 
   const onDelete = () => {
-    removeCard(id, columnId)
+    removeCard(id)
+    removeCardFromColumn(columnId, id)
   }
 
   return (
@@ -48,6 +49,7 @@ CardComponent.propTypes = {
   id: PropTypes.number.isRequired,
   columnId: PropTypes.number.isRequired,
   removeCard: PropTypes.func.isRequired,
+  removeCardFromColumn: PropTypes.func.isRequired,
 }
 
 export default CardComponent
