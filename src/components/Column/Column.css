@@ -5,6 +5,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 1rem;
+  background-color: #ECEFF4;
+  padding: 1rem;
 }
 
 .column__header {

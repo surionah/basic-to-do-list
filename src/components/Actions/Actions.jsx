@@ -13,7 +13,6 @@ const Actions = ({
       <Button
         tooltip={editTooltip}
         label='Edit'
-        type='primary'
         onButtonClick={onEditClick}
       ></Button>
       <Button

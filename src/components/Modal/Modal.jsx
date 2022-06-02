@@ -61,7 +61,11 @@ const Modal = () => {
           type='primary'
           onButtonClick={onOkClick}
         />
-        <Button tooltip='Cancel' label='Cancel' onButtonClick={onCancelClick} />
+        <Button
+          tooltip='Cancel'
+          label='Cancel'
+          onButtonClick={onCancelClick}
+        />
       </div>
     </dialog>
   )

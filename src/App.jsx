@@ -5,6 +5,7 @@ import ModalContext from './context/modalContext'
 import DataContext from './context/dataContext'
 import Dashboard from './components/Dashboard/Dashboard'
 import Modal from './components/Modal/Modal'
+import Header from './components/Header/Header'
 import { store } from './state/store'
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           }}
         >
           <Provider store={store}>
+            <Header />
             <Dashboard />
             <Modal />
           </Provider>

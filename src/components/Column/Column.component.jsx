@@ -68,8 +68,7 @@ const ColumnComponent = ({
           ))}
       <Button
         tooltip='Create new'
-        label='Create'
-        type='primary'
+        label='Add card'
         onButtonClick={onCreate}
       />
     </div>
