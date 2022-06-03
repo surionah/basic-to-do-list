@@ -1,5 +1,6 @@
 import Button from '../Button/Button'
 import useAppContext from '../../hooks/useAppContext'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 import './Header.css'
 
@@ -16,9 +17,11 @@ const Header = () => {
       <h3>ToDo List</h3>
       <Button
         tooltip='Create new column'
-        label='Add column'
         onButtonClick={onCreate}
-      />
+      >
+        <AiOutlinePlus />
+        {'Add column'}
+      </Button>
     </nav>
   )
 }

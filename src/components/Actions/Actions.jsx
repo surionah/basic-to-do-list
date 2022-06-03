@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types'
+import { AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai'
 
 import Button from '../Button/Button'
+
+import './Actions.css'
 
 const Actions = ({
   editTooltip,
@@ -12,14 +15,18 @@ const Actions = ({
     <div className='actions'>
       <Button
         tooltip={editTooltip}
-        label='Edit'
         onButtonClick={onEditClick}
-      ></Button>
+      >
+        <AiOutlineEdit />
+        {'Edit'}
+      </Button>
       <Button
         tooltip={deleteTooltip}
-        label='Delete'
         onButtonClick={onDeleteClick}
-      ></Button>
+      >
+        <AiOutlineDelete />
+        {'Delete'}
+      </Button>
     </div>
   )
 }

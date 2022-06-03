@@ -2,17 +2,24 @@ import PropTypes from 'prop-types'
 
 import './Button.css'
 
-const Button = ({ tooltip, label, onButtonClick, type = 'secondary' }) => {
+const Button = ({ children, tooltip, onButtonClick, type = 'secondary' }) => {
   return (
-    <button className={`btn ${type}`} title={tooltip} onClick={onButtonClick}>
-      {label}
+    <button
+      className={`btn ${type}`}
+      title={tooltip}
+      onClick={onButtonClick}
+    >
+      {children}
     </button>
   )
 }
 
 Button.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
   tooltip: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
   onButtonClick: PropTypes.func.isRequired,
   type: PropTypes.string,
 }

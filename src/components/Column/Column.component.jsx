@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 import Card from '../Card/Card'
 import Button from '../Button/Button'
@@ -68,9 +69,11 @@ const ColumnComponent = ({
           ))}
       <Button
         tooltip='Create new'
-        label='Add card'
         onButtonClick={onCreate}
-      />
+      >
+        <AiOutlinePlus />
+        {'Add card'}
+      </Button>
     </div>
   )
 }

@@ -53,19 +53,22 @@ const Modal = () => {
           <ColumnForm ref={modalBodyRef} />
         ) : (
           <CardForm ref={modalBodyRef} />
-        ))}
+        ))
+      }
       <div className='modal__actions'>
         <Button
           tooltip='Ok'
-          label='Ok'
           type='primary'
           onButtonClick={onOkClick}
-        />
+        >
+          {'Ok'}
+        </Button>
         <Button
           tooltip='Cancel'
-          label='Cancel'
           onButtonClick={onCancelClick}
-        />
+        >
+          {'Cancel'}
+        </Button>
       </div>
     </dialog>
   )
