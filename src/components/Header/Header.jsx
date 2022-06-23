@@ -5,7 +5,6 @@ import { AiOutlinePlus } from 'react-icons/ai'
 import './Header.css'
 
 const Header = () => {
-
   const { setModalPurpose } = useAppContext()
 
   const onCreate = () => {
@@ -15,10 +14,7 @@ const Header = () => {
   return (
     <nav className='navbar'>
       <h3>ToDo List</h3>
-      <Button
-        tooltip='Create new column'
-        onButtonClick={onCreate}
-      >
+      <Button tooltip='Create new column' onButtonClick={onCreate}>
         <AiOutlinePlus />
         {'Add column'}
       </Button>

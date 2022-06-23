@@ -3,40 +3,40 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const ColumnApi = createApi({
   reducerPath: 'columns',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3002/' }),
-  endpoints: builder => ({
+  endpoints: (builder) => ({
     getColumns: builder.query({
       query: () => 'columns/',
-      providesTags: ['columns']
+      providesTags: ['columns'],
     }),
     createColumn: builder.mutation({
-      query: column => ({
+      query: (column) => ({
         url: 'columns',
         method: 'POST',
-        body: column
+        body: column,
       }),
-      invalidatesTags: ['columns']
+      invalidatesTags: ['columns'],
     }),
     editColumn: builder.mutation({
-      query: column => ({
+      query: (column) => ({
         url: `columns/${column.id}`,
         method: 'PATCH',
-        body: column
+        body: column,
       }),
-      invalidatesTags: ['columns']
+      invalidatesTags: ['columns'],
     }),
     deleteColumn: builder.mutation({
-      query: id => ({
+      query: (id) => ({
         url: `columns/${id}`,
-        method: 'DELETE'
+        method: 'DELETE',
       }),
-      invalidatesTags: ['columns']
-    })
-  })
+      invalidatesTags: ['columns'],
+    }),
+  }),
 })
 
 export const {
   useGetColumnsQuery,
   useCreateColumnMutation,
   useEditColumnMutation,
-  useDeleteColumnMutation
+  useDeleteColumnMutation,
 } = ColumnApi

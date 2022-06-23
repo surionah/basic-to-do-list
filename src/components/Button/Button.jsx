@@ -4,11 +4,7 @@ import './Button.css'
 
 const Button = ({ children, tooltip, onButtonClick, type = 'secondary' }) => {
   return (
-    <button
-      className={`btn ${type}`}
-      title={tooltip}
-      onClick={onButtonClick}
-    >
+    <button className={`btn ${type}`} title={tooltip} onClick={onButtonClick}>
       {children}
     </button>
   )
@@ -17,7 +13,7 @@ const Button = ({ children, tooltip, onButtonClick, type = 'secondary' }) => {
 Button.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]).isRequired,
   tooltip: PropTypes.string.isRequired,
   onButtonClick: PropTypes.func.isRequired,

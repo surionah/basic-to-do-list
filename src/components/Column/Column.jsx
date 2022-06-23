@@ -8,20 +8,19 @@ import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
 import useAppContext from '../../hooks/useAppContext'
 import { useDeleteColumnMutation } from '../../state/api-slices/column-api.slice'
-import { useGetCardsQuery, useDeleteCardMutation } from '../../state/api-slices/card-api.slice'
+import {
+  useGetCardsQuery,
+  useDeleteCardMutation,
+} from '../../state/api-slices/card-api.slice'
 
 import './Column.css'
 
-const Column = ({
-  name,
-  id,
-  cardsIds,
-}) => {
+const Column = ({ name, id, cardsIds }) => {
   const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose, setSelectedColumnId } = useAppContext()
-  const [ deleteColumn ] = useDeleteColumnMutation()
+  const [deleteColumn] = useDeleteColumnMutation()
   const { data: cards, isLoading } = useGetCardsQuery()
-  const [ deleteCard ] = useDeleteCardMutation()
+  const [deleteCard] = useDeleteCardMutation()
 
   const onCreate = () => {
     setModalPurpose('ADD_CARD')
@@ -34,7 +33,7 @@ const Column = ({
   }
 
   const onDelete = () => {
-    cardsIds.forEach(id => deleteCard(id));
+    cardsIds.forEach((id) => deleteCard(id))
     deleteColumn(id)
   }
 
@@ -55,7 +54,8 @@ const Column = ({
           />
         </Overlay>
       </div>
-      {(!isLoading && cards.length > 0) &&
+      {!isLoading &&
+        cards.length > 0 &&
         cards
           .filter((card) => cardsIds.includes(card.id))
           .map((card) => (
@@ -67,10 +67,7 @@ const Column = ({
               key={card.id}
             />
           ))}
-      <Button
-        tooltip='Create new'
-        onButtonClick={onCreate}
-      >
+      <Button tooltip='Create new' onButtonClick={onCreate}>
         <AiOutlinePlus />
         {'Add card'}
       </Button>

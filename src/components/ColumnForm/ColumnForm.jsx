@@ -10,7 +10,7 @@ import useAppContext from '../../hooks/useAppContext'
 import {
   useGetColumnsQuery,
   useCreateColumnMutation,
-  useEditColumnMutation
+  useEditColumnMutation,
 } from '../../state/api-slices/column-api.slice'
 
 const ColumnForm = forwardRef((props, ref) => {
@@ -18,14 +18,14 @@ const ColumnForm = forwardRef((props, ref) => {
   const [name, setName] = useState('')
   const isEdit = modalPurpose === 'EDIT_COLUMN'
   const { data: columns } = useGetColumnsQuery()
-  const [ createColumn ] = useCreateColumnMutation()
-  const [ editColumn ] = useEditColumnMutation()
+  const [createColumn] = useCreateColumnMutation()
+  const [editColumn] = useEditColumnMutation()
 
   useImperativeHandle(ref, () => ({
     save: () => {
-      !isEdit ?
-        createColumn({id: Date.now(), name, cardsIds: []}) :
-        editColumn({id: selectedColumnId, name})
+      !isEdit
+        ? createColumn({ id: Date.now(), name, cardsIds: [] })
+        : editColumn({ id: selectedColumnId, name })
     },
   }))
 

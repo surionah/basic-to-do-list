@@ -4,7 +4,6 @@ import { useGetColumnsQuery } from '../../state/api-slices/column-api.slice'
 import './Dashboard.css'
 
 const Dashboard = () => {
-
   const { data: columns, isLoading } = useGetColumnsQuery()
 
   return (
@@ -17,8 +16,7 @@ const Dashboard = () => {
             cardsIds={column.cardsIds}
             key={column.id}
           />
-        )
-      )}
+        ))}
     </div>
   )
 }

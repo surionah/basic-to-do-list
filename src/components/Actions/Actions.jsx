@@ -13,17 +13,11 @@ const Actions = ({
 }) => {
   return (
     <div className='actions'>
-      <Button
-        tooltip={editTooltip}
-        onButtonClick={onEditClick}
-      >
+      <Button tooltip={editTooltip} onButtonClick={onEditClick}>
         <AiOutlineEdit />
         {'Edit'}
       </Button>
-      <Button
-        tooltip={deleteTooltip}
-        onButtonClick={onDeleteClick}
-      >
+      <Button tooltip={deleteTooltip} onButtonClick={onDeleteClick}>
         <AiOutlineDelete />
         {'Delete'}
       </Button>
