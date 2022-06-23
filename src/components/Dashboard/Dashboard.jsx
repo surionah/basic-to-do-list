@@ -1,13 +1,15 @@
-import PropTypes from 'prop-types'
-
 import Column from '../Column/Column'
+import { useGetColumnsQuery } from '../../state/api-slices/column-api.slice'
 
 import './Dashboard.css'
 
-const DashboardComponent = ({ columns }) => {
+const Dashboard = () => {
+
+  const { data: columns, isLoading } = useGetColumnsQuery()
+
   return (
     <div className='dashboard'>
-      {columns.length > 0 &&
+      {!isLoading &&
         columns.map((column) => (
           <Column
             name={column.name}
@@ -21,8 +23,4 @@ const DashboardComponent = ({ columns }) => {
   )
 }
 
-DashboardComponent.propTypes = {
-  columns: PropTypes.array.isRequired,
-}
-
-export default DashboardComponent
+export default Dashboard

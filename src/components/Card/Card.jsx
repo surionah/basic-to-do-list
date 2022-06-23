@@ -4,19 +4,22 @@ import PropTypes from 'prop-types'
 import Overlay from '../Overlay/Overlay'
 import Actions from '../Actions/Actions'
 import useAppContext from '../../hooks/useAppContext'
+import { useDeleteCardMutation } from '../../state/api-slices/card-api.slice'
+import { useGetColumnsQuery, useEditColumnMutation } from '../../state/api-slices/column-api.slice'
 
 import './Card.css'
 
-const CardComponent = ({
+const Card = ({
   title,
   description,
   id,
   columnId,
-  removeCard,
-  removeCardFromColumn,
 }) => {
   const [isMouseHover, setIsMouseHover] = useState(false)
   const { setModalPurpose, setSelectedCardId } = useAppContext()
+  const { data: columns } = useGetColumnsQuery()
+  const [ deleteCard ] = useDeleteCardMutation()
+  const [ editColumn ] = useEditColumnMutation()
 
   const onEdit = () => {
     setModalPurpose('EDIT_CARD')
@@ -24,8 +27,10 @@ const CardComponent = ({
   }
 
   const onDelete = () => {
-    removeCard(id)
-    removeCardFromColumn(columnId, id)
+    deleteCard(id)
+    const columnToEdit = {...columns.find(col => col.id === columnId)}
+    columnToEdit.cardsIds = columnToEdit.cardsIds.filter(card => card !== id)
+    editColumn(columnToEdit)
   }
 
   return (
@@ -50,13 +55,11 @@ const CardComponent = ({
   )
 }
 
-CardComponent.propTypes = {
+Card.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   columnId: PropTypes.number.isRequired,
-  removeCard: PropTypes.func.isRequired,
-  removeCardFromColumn: PropTypes.func.isRequired,
 }
 
-export default CardComponent
+export default Card

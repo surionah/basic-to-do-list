@@ -4,19 +4,28 @@ import {
   useLayoutEffect,
   useImperativeHandle,
 } from 'react'
-import PropTypes from 'prop-types'
 
 import Input from '../Input/Input'
 import useAppContext from '../../hooks/useAppContext'
+import {
+  useGetColumnsQuery,
+  useCreateColumnMutation,
+  useEditColumnMutation
+} from '../../state/api-slices/column-api.slice'
 
-const ColumnFormComp = forwardRef(({ columns, addColumn, editColumn }, ref) => {
+const ColumnForm = forwardRef((props, ref) => {
   const { modalPurpose, selectedColumnId } = useAppContext()
   const [name, setName] = useState('')
   const isEdit = modalPurpose === 'EDIT_COLUMN'
+  const { data: columns } = useGetColumnsQuery()
+  const [ createColumn ] = useCreateColumnMutation()
+  const [ editColumn ] = useEditColumnMutation()
 
   useImperativeHandle(ref, () => ({
     save: () => {
-      !isEdit ? addColumn(Date.now(), name) : editColumn(selectedColumnId, name)
+      !isEdit ?
+        createColumn({id: Date.now(), name, cardsIds: []}) :
+        editColumn({id: selectedColumnId, name})
     },
   }))
 
@@ -32,11 +41,6 @@ const ColumnFormComp = forwardRef(({ columns, addColumn, editColumn }, ref) => {
   )
 })
 
-ColumnFormComp.displayName = 'ColumnFormComp'
-ColumnFormComp.propTypes = {
-  columns: PropTypes.array.isRequired,
-  addColumn: PropTypes.func.isRequired,
-  editColumn: PropTypes.func.isRequired,
-}
+ColumnForm.displayName = 'ColumnForm'
 
-export default ColumnFormComp
+export default ColumnForm
