@@ -1,0 +1,20 @@
+{
+  "columns": [
+    {
+      "id": 1,
+      "name": "To Do",
+      "cardsIds": []
+    },
+    {
+      "id": 2,
+      "name": "In Progress",
+      "cardsIds": []
+    },
+    {
+      "id": 3,
+      "name": "Done",
+      "cardsIds": []
+    }
+  ],
+  "cards": []
+}
