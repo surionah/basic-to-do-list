@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <nav className='navbar'>
-      <h3>ToDo List</h3>
+      <h3>To Do List</h3>
       <Button tooltip='Create new column' onButtonClick={onCreate}>
         <AiOutlinePlus />
         {'Add column'}
