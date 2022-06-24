@@ -56,7 +56,7 @@ const Card = ({ title, description, id, columnId }) => {
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   columnId: PropTypes.number.isRequired,
 }
 

@@ -4,6 +4,7 @@ import {
   useImperativeHandle,
   useLayoutEffect,
 } from 'react'
+import { v4 as uuid } from 'uuid'
 
 import Input from '../Input/Input'
 import useAppContext from '../../hooks/useAppContext'
@@ -31,7 +32,7 @@ const CardForm = forwardRef((_, ref) => {
   useImperativeHandle(ref, () => ({
     save: () => {
       if (!isEdit) {
-        const cardId = Date.now()
+        const cardId = uuid()
         createCard({ id: cardId, title, description })
         const columnToEdit = {
           ...columns.find((col) => col.id === selectedColumnId),

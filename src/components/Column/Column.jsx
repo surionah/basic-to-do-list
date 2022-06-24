@@ -77,7 +77,7 @@ const Column = ({ name, id, cardsIds }) => {
 
 Column.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   cardsIds: PropTypes.array.isRequired,
 }
 

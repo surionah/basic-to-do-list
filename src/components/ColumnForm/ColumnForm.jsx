@@ -12,6 +12,7 @@ import {
   useCreateColumnMutation,
   useEditColumnMutation,
 } from '../../state/api-slices/column-api.slice'
+import { v4 as uuid } from 'uuid'
 
 const ColumnForm = forwardRef((props, ref) => {
   const { modalPurpose, selectedColumnId } = useAppContext()
@@ -24,7 +25,7 @@ const ColumnForm = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     save: () => {
       !isEdit
-        ? createColumn({ id: Date.now(), name, cardsIds: [] })
+        ? createColumn({ id: uuid(), name, cardsIds: [] })
         : editColumn({ id: selectedColumnId, name })
     },
   }))

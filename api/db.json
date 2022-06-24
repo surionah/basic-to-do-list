@@ -1,18 +1,23 @@
 {
   "columns": [
     {
-      "id": 1,
+      "id": "132bca17-04a3-4244-a4a0-1ae3a31d339f",
       "name": "To Do",
       "cardsIds": []
     },
     {
-      "id": 2,
+      "id": "14fc46e3-503f-439d-8091-e9d227e65689",
       "name": "In Progress",
       "cardsIds": []
     },
     {
-      "id": 3,
+      "id": "6d4c9efe-a917-486e-a117-f6f35c33b34b",
       "name": "Done",
+      "cardsIds": []
+    },
+    {
+      "id": "d1c08dab-c5f0-480d-b9b4-34f03a0c92db",
+      "name": "test",
       "cardsIds": []
     }
   ],
